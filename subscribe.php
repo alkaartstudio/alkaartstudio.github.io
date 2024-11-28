@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Email settings
-    $to = "your-email@example.com"; // Replace with your email
+    $to = "info.alkaartstudio@gmail.com"; // Your email address
     $subject = "New Newsletter Subscription";
     $message = "You have a new newsletter subscriber:\n\nName: $name\nEmail: $email";
     $headers = "From: no-reply@alkasartstudio.com";
