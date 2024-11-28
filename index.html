@@ -122,7 +122,57 @@
             margin: 0 auto;
             max-width: 800px;
         }
-
+        
+        /* Newsletter Section */
+        .newsletter {
+            background-color: #f7f7f7;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .newsletter h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .newsletter p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-form input {
+            padding: 10px;
+            margin-bottom: 15px;
+            width: 100%;
+            max-width: 350px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+        }
+        
+        .newsletter-form button {
+            padding: 10px 20px;
+            background-color: #ffd700;
+            color: #333;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .newsletter-form button:hover {
+            background-color: #e5c100;
+        }
+        
         .contact {
             background-color: #f7f7f7;
             padding: 40px;
@@ -244,6 +294,15 @@
 
         <p>Feel free to browse through my gallery, and thank you for being a part of this artistic journey with me.</p>
 
+    </section>
+    <section id="newsletter" class="newsletter">
+        <h2>Subscribe to Our Newsletter</h2>
+        <p>Stay updated with the latest art collections, workshops, and offers from Alka's Art Studio.</p>
+        <form action="subscribe.php" method="POST" class="newsletter-form">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <button type="submit" class="btn">Subscribe</button>
+        </form>
     </section>
 
     <section id="contact" class="contact">
