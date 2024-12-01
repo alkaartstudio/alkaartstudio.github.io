@@ -33,12 +33,30 @@
     </section>
 
     <section id="gallery" class="gallery">
+    <h2>Gallery</h2>
+    <!-- Filter Buttons -->
+    <div class="filter-buttons">
+        <button class="filter-btn" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="canvas">Canvas Painting</button>
+        <button class="filter-btn" data-filter="fabric">Fabric Painting</button>
+        <button class="filter-btn" data-filter="clay">Clay Art</button>
+        <button class="filter-btn" data-filter="wedding">Wedding Gifts Decoration</button>
+    </div>
+
     <!-- Gallery Images -->
-    <img src="images/Artwork_1.png" alt="Artwork 1" data-caption="This is Artwork 1">
-    <img src="images/Artwork_2.png" alt="Artwork 2" data-caption="This is Artwork 2">
-    <img src="images/Artwork_3.png" alt="Artwork 3" data-caption="This is Artwork 3">
-    <img src="images/Artwork_4.png" alt="Artwork 4" data-caption="This is Artwork 4">
+    <div class="gallery-images">
+        <img src="images/Artwork_2.png" alt="Starry Nights Canvas" data-category="canvas" data-caption="Starry Nights Canvas">
+        <img src="images/canvas2.jpg" alt="Canvas Painting 2" data-category="canvas">
+        <img src="images/Artwork_4.png" alt="Hand Painted Tote Bag" data-category="fabric">
+        <img src="images/fabric2.jpg" alt="Fabric Painting 2" data-category="fabric">
+        <img src="images/wedding1.jpg" alt="Wedding Decoration 1" data-category="wedding">
+        <img src="images/wedding2.jpg" alt="Wedding Decoration 2" data-category="wedding">
+        <img src="images/Artwork_1.png" alt="Cozy Corner Retreat_1" data-category="clay" data-caption="Cozy Corner Retreat_1">
+        <img src="images/Artwork_3.png" alt="Cozy Corner Retreat_2" data-category="clay" data-caption="Cozy Corner Retreat_2">
+    </div>
     </section>
+
+    
 
     <!-- Lightbox Structure -->
     <div id="lightbox" class="lightbox">
@@ -49,7 +67,7 @@
         <a class="next">&#10095;</a>
     </div>
     <section id="categories" class="categories">
-    <h2>Art Categories</h2>
+    <h2>Categories</h2>
     <div class="category">
         <h3>Canvas Painting</h3>
         <p>Explore our exquisite collection of canvas paintings that bring life to your walls with vibrant colors and creativity.</p>
@@ -60,6 +78,12 @@
         <p>Discover the charm of fabric painting, blending art and fashion seamlessly with detailed, handcrafted designs.</p>
         <img src="images/fabric_painting.jpg" alt="Fabric Painting">
     </div>
+    <div class="category">
+        <h3>Clay Art</h3>
+        <p>Explore the beauty of clay art, where creativity takes shape in stunning sculptures and handcrafted pottery, bringing life to timeless designs.</p>
+        <img src="images/clay_art.jpg" alt="Clay Art">
+    </div>
+        
     <div class="category">
         <h3>Wedding Gifts Decoration</h3>
         <p>Make your special moments unforgettable with our unique and personalized wedding gift decorations.</p>
@@ -167,6 +191,32 @@
         }
     });
 </script>
+    
+<script>
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const galleryImages = document.querySelectorAll(".gallery-images img");
+
+    filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            // Remove 'active' class from all buttons
+            filterButtons.forEach((btn) => btn.classList.remove("active"));
+            // Add 'active' class to the clicked button
+            button.classList.add("active");
+
+            const filter = button.dataset.filter;
+
+            // Show/hide images based on filter
+            galleryImages.forEach((img) => {
+                if (filter === "all" || img.dataset.category === filter) {
+                    img.classList.remove("hidden");
+                } else {
+                    img.classList.add("hidden");
+                }
+            });
+        });
+    });
+</script>
+
 
 
 </body>
