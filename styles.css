@@ -10,13 +10,13 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background-color: #333; /* Updated to your preferred background color */
+    background-color: #333;
     color: white;
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Keeps the shadow effect */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 header .logo {
@@ -60,12 +60,14 @@ nav ul li a:hover {
 }
 
 .hero h1 {
-    font-size: 3rem;
+    font-family: 'Dancing Script', cursive; /* Changed font to Dancing Script */
+    font-size: 4rem; /* Increased size for better visibility */
     margin: 0;
+    text-align: center;
 }
 
 .hero p {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     margin: 20px 0;
 }
 
@@ -86,24 +88,41 @@ nav ul li a:hover {
 
 .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* Improved grid setup for artistic effect */
+    gap: 25px;
     padding: 40px;
     transition: grid-template-columns 0.3s ease-in-out;
 }
 
 .gallery img {
     width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, opacity 0.3s ease;
+    height: auto;
+    border-radius: 15px; /* Increased border-radius for a softer, artistic feel */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow for a more artistic look */
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .gallery img:hover {
-    transform: scale(1.05);
+    transform: scale(1.1); /* Slight zoom effect for hover */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover for a "pop" effect */
 }
 
-/* Lightbox Styles */
+.gallery h2 {
+    font-family: 'Dancing Script', cursive; /* Apply Dancing Script font to the gallery heading */
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 30px;
+    text-align: center; /* Center align the gallery title */
+}
+
+.gallery-description {
+    font-size: 1.2rem;
+    text-align: center;
+    color: #777;
+    margin-top: 20px;
+    line-height: 1.6;
+}
+
 .lightbox {
     display: none;
     position: fixed;
@@ -180,13 +199,6 @@ nav ul li a:hover {
     max-width: 800px;
 }
 
-/* Suggestions improvement (Add smooth transitions for links, buttons, and images on hover) */
-button:hover {
-    background-color: #f4a261;
-    transform: scale(1.05);
-    transition: 0.3s ease;
-}
-
 /* Categories Section */
 .categories {
     padding: 40px 20px;
@@ -236,7 +248,6 @@ button:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     transition: all 0.3s ease;
 }
-
 
 .gallery-images {
     display: flex;
