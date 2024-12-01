@@ -171,6 +171,49 @@ nav ul li a:hover {
     max-width: 800px;
 }
 
+/*Categories Section */
+.categories {
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.categories h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.category {
+    margin: 20px auto;
+    max-width: 600px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.category h3 {
+    font-size: 1.5rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.category p {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.category img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+
 /* Newsletter Section */
 .newsletter {
     background-color: #f7f7f7;
