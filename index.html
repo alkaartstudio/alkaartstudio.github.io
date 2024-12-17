@@ -10,385 +10,236 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         /* General Styles */
-body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: #f4f4f4;
-    color: #333;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-header {
-    background-color: #333;
-    padding: 20px;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
 
+        /* Header */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-header .logo img {
-    height: 40px;
-    margin-right: 10px;
-}
+        header .logo {
+            display: flex;
+            align-items: center;
+        }
 
-header nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
+        header .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
 
-header nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 500;
-}
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
 
-header nav ul li a:hover {
-    color: #f39c12;
-}
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
 
-.hero {
-    background: url('images/banner_3.png') no-repeat center center/cover;
-    text-align: center;
-    color: #fff;
-    padding: 100px 0;
-}
+        header nav ul li a:hover {
+            color: #f39c12;
+        }
 
-.hero h1 {
-    font-size: 3rem;
-}
+        /* Hero Section */
+        .hero {
+            background: url('images/banner_3.png') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            padding: 100px 20px;
+        }
 
-.hero p {
-    font-size: 1.2rem;
-    margin: 10px 0;
-}
+        .hero h1 {
+            font-size: 3rem;
+        }
 
-.hero .btn {
-    background-color: #f39c12;
-    padding: 10px 20px;
-    color: #fff;
-    text-decoration: none;
-    font-weight: 700;
-    border-radius: 5px;
-}
+        .hero p {
+            font-size: 1.2rem;
+            margin: 10px 0 20px;
+        }
 
-.hero .btn:hover {
-    background-color: #e67e22;
-}
+        .hero .btn {
+            background-color: #f39c12;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
 
-/* Gallery Section */
-.gallery {
-    padding: 50px;
-    background-color: #fff;
-    text-align: center;
-}
+        .hero .btn:hover {
+            background-color: #e67e22;
+        }
 
-.gallery h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
+        /* Gallery Section */
+        .gallery {
+            padding: 50px 20px;
+            background-color: #fff;
+            text-align: center;
+        }
 
-.carousel {
-    position: relative;
-    max-width: 80%;
-    margin: 0 auto;
-}
+        .gallery h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
 
-.carousel-images img {
-    width: 100%;
-    display: block;
-    transition: transform 0.5s ease;
-}
+        .gallery-images img {
+            max-width: 100%;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
 
-button {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    border: none;
-    font-size: 2rem;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 10px;
-    cursor: pointer;
-    z-index: 10;
-}
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
 
-.prev-btn {
-    left: 0;
-}
+        .lightbox img {
+            max-width: 90%;
+            max-height: 80%;
+        }
 
-.next-btn {
-    right: 0;
-}
+        .lightbox .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2rem;
+            color: #fff;
+            cursor: pointer;
+        }
 
-/* Categories Section */
-.categories {
-    background-color: #fafafa;
-    padding: 50px 0;
-}
+        /* Categories Section */
+        .categories {
+            background-color: #fafafa;
+            padding: 50px 20px;
+            text-align: center;
+        }
 
-.categories .category {
-    text-align: center;
-    margin-bottom: 30px;
-}
+        .categories .category img {
+            max-width: 300px;
+            margin: 15px 0;
+        }
 
-.categories img {
-    width: 100%;
-    max-width: 300px;
-    margin-top: 15px;
-}
+        /* About Section */
+        .about {
+            padding: 50px 20px;
+            background-color: #fff;
+            text-align: center;
+        }
 
-/* About Section */
-.about {
-    padding: 50px;
-    background-color: #fff;
-    text-align: center;
-}
-
-/* Newsletter Section */
-.newsletter {
-    background-color: #f39c12;
-    color: #fff;
-    padding: 30px;
-    text-align: center;
-}
-
-.newsletter input[type="text"],
-.newsletter input[type="email"] {
-    padding: 10px;
-    margin: 10px;
-    border: none;
-    border-radius: 5px;
-    width: 250px;
-}
-
-.newsletter button {
-    padding: 10px 20px;
-    background-color: #fff;
-    color: #f39c12;
-    border: none;
-    border-radius: 5px;
-    font-weight: 700;
-}
-
-.newsletter button:hover {
-    background-color: #e67e22;
-    color: white;
-}
-
-/* Footer */
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-}
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
     </style>
 </head>
 
 <body>
+    <!-- Header -->
     <header>
         <div class="logo">
             <img src="images/Logo_1.png" alt="Alka's Art Studio Logo">
             <span>Alka's Art Studio</span>
         </div>
         <nav>
-            <ul id="menu-menu-1" class="nav-menu">
+            <ul>
                 <li><a href="https://alkaartstudio.github.io/">Home</a></li>
                 <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#categories">Categories</a></li>
-                <li><a href="https://alka-art-studio.mini.site">Store</a></li> <!-- Updated Store Link -->
-                <li><a href="#workshop">Workshop</a></li>
+                <li><a href="https://alka-art-studio.mini.site">Store</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero">
         <h1>Welcome to Alka's Art Studio</h1>
         <p>Explore the beauty of handmade art and creative craftsmanship.</p>
         <a href="https://alka-art-studio.mini.site" class="btn">Shop Now</a>
     </section>
 
+    <!-- Gallery Section -->
     <section id="gallery" class="gallery">
         <h2>Gallery</h2>
-        <!-- Gallery Images -->
         <div class="gallery-images">
-            <img src="images/Artwork_2.png" alt="Starry Nights Canvas" data-category="canvas" data-caption="Starry Nights Canvas">
-            <img src="images/canvas2.jpg" alt="Canvas Painting 2" data-category="canvas">
-            <img src="images/Artwork_4.png" alt="Hand Painted Tote Bag" data-category="fabric">
-            <img src="images/fabric2.jpg" alt="Fabric Painting 2" data-category="fabric">
-            <img src="images/wedding1.jpg" alt="Wedding Decoration 1" data-category="wedding">
-            <img src="images/wedding2.jpg" alt="Wedding Decoration 2" data-category="wedding">
-            <img src="images/Artwork_1.png" alt="Cozy Corner Retreat_1" data-category="clay" data-caption="Cozy Corner Retreat_1">
-            <img src="images/Artwork_3.png" alt="Cozy Corner Retreat_2" data-category="clay" data-caption="Cozy Corner Retreat_2">
+            <img src="images/Artwork_2.png" alt="Starry Nights Canvas">
+            <img src="images/Artwork_4.png" alt="Hand Painted Tote Bag">
+            <img src="images/Artwork_1.png" alt="Cozy Corner Retreat">
         </div>
     </section>
 
-    <!-- Lightbox Structure -->
+    <!-- Lightbox -->
     <div id="lightbox" class="lightbox">
         <span class="close">&times;</span>
-        <img class="lightbox-image" alt="Selected Artwork">
-        <p class="lightbox-caption"></p>
-        <a class="prev">&#10094;</a>
-        <a class="next">&#10095;</a>
+        <img id="lightbox-img" src="" alt="">
     </div>
 
-    <section id="categories" class="categories">
-        <h2>Categories</h2>
-        <div class="category">
-            <h3>Canvas Painting</h3>
-            <p>Explore our exquisite collection of canvas paintings that bring life to your walls with vibrant colors and creativity.</p>
-            <img src="images/Artwork_2.png" alt="Canvas Painting">
-        </div>
-        <div class="category">
-            <h3>Fabric Painting</h3>
-            <p>Discover the charm of fabric painting, blending art and fashion seamlessly with detailed, handcrafted designs.</p>
-            <img src="images/Artwork_4.png" alt="Fabric Painting">
-        </div>
-        <div class="category">
-            <h3>Clay Art</h3>
-            <p>Explore the beauty of clay art, where creativity takes shape in stunning sculptures and handcrafted pottery, bringing life to timeless designs.</p>
-            <img src="images/Artwork_1.png" alt="Clay Art_1">
-            <img src="images/Artwork_3.png" alt="Clay Art_2">
-        </div>
-
-        <div class="category">
-            <h3>Wedding Gifts Decoration</h3>
-            <p>Make your special moments unforgettable with our unique and personalized wedding gift decorations.</p>
-            <img src="images/wedding_gifts.jpg" alt="Wedding Gifts Decoration">
-        </div>
-    </section>
-
+    <!-- About Section -->
     <section id="about" class="about">
         <h2>About Us</h2>
-        <p>Welcome to <strong>Alka's Art Studio</strong>, a space where creativity meets craftsmanship! My name is Alka, and I've been immersed in the world of art for over two decades. With a deep passion for both traditional and contemporary forms of art, I’ve dedicated myself to mastering various mediums, from painting and sculpture to mixed-media creations.</p>
-
-        <p>At Alka's Art Studio, art isn't just something I create—it's a way of life, a method of self-expression, and a journey of exploration. Over the years, I’ve had the privilege of teaching and inspiring countless individuals through workshops and vocational training. As a registered Fevicryl teacher for over 15 years, I have shared my knowledge and love for art with students, encouraging them to think outside the box and experiment with unique materials and techniques.</p>
-
-        <p>This online gallery serves as an extension of my passion for creativity, offering a collection of my latest works and the opportunity to purchase and enjoy art that can brighten up any space. Each piece in the collection reflects my personal journey, artistic expression, and deep connection to the materials I work with. I believe that art has the power to transform both spaces and souls, which is why every creation is carefully crafted with attention to detail and love.</p>
-
-        <p>Whether you're looking to add a special piece of artwork to your collection, seeking inspiration, or simply admiring the beauty of handmade creations, I hope my art brings joy, creativity, and positive energy to your life.</p>
-
-        <p>Feel free to browse through my gallery, and thank you for being a part of this artistic journey with me.</p>
+        <p>Welcome to Alka's Art Studio, a space where creativity meets craftsmanship. Dive into the world of handmade art, from canvases to clay sculptures.</p>
     </section>
 
-    <section id="newsletter" class="newsletter">
-        <h2>Subscribe to Our Newsletter</h2>
-        <p>Stay updated with the latest art collections, workshops, and offers from Alka's Art Studio.</p>
-        <form action="subscribe.php" method="POST" class="newsletter-form">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-           
-        </form>
-    </section>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Alka's Art Studio | Contact Us</p>
+    </footer>
 
-    <section id="contact" class="contact">
-        <h2>Contact Us</h2>
-        <div class="contact-container">
-            <div class="contact-left">
-                <ul>
-                    <li>Email: <a href="mailto:alka.art.journal@gmail.com">alka.art.journal@gmail.com</a></li>
-                    <li>Mobile: <a href="tel:+919034253673">+91-9034253673</a></li>
-                </ul>
-            </div>
-            <div class="contact-right">
-                <div class="social-icons">
-                    <a href="https://www.youtube.com/@AlkasArtJournal" target="_blank"><img src="images/youtube.png" alt="YouTube"></a>
-                    <a href="https://in.pinterest.com/alka_art_journal/" target="_blank"><img src="images/pinterest.png" alt="Pinterest"></a>
-                    <a href="https://www.facebook.com/AlkaArtJournal/" target="_blank"><img src="images/facebook.png" alt="Facebook"></a>
-                    <a href="https://www.instagram.com/alka_art_journal/" target="_blank"><img src="images/instagram.png" alt="Instagram"></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<footer>
-    <p>&copy; 2024 Alka's Art Studio | <a href="#contact">Contact Us</a></p>
-</footer>
-
-
+    <!-- Lightbox Script -->
     <script>
-        // Lightbox elements
         const lightbox = document.getElementById("lightbox");
-        const lightboxImage = document.querySelector(".lightbox-image");
-        const lightboxCaption = document.querySelector(".lightbox-caption");
-        const galleryImages = document.querySelectorAll(".gallery img");
-        const prevBtn = document.querySelector(".prev");
-        const nextBtn = document.querySelector(".next");
+        const lightboxImg = document.getElementById("lightbox-img");
         const closeBtn = document.querySelector(".close");
 
-        let currentIndex = 0;
-
-        // Show lightbox with selected image
-        galleryImages.forEach((img, index) => {
+        document.querySelectorAll(".gallery-images img").forEach((img) => {
             img.addEventListener("click", () => {
-                currentIndex = index;
-                updateLightbox();
                 lightbox.style.display = "flex";
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
             });
         });
 
-        // Update lightbox content
-        function updateLightbox() {
-            const selectedImage = galleryImages[currentIndex];
-            lightboxImage.src = selectedImage.src;
-            lightboxImage.alt = selectedImage.alt;
-            lightboxCaption.textContent = selectedImage.dataset.caption || "No caption available";
-        }
-
-        // Navigate to previous image
-        prevBtn.addEventListener("click", () => {
-            currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-            updateLightbox();
-        });
-
-        // Navigate to next image
-        nextBtn.addEventListener("click", () => {
-            currentIndex = (currentIndex + 1) % galleryImages.length;
-            updateLightbox();
-        });
-
-        // Close lightbox
         closeBtn.addEventListener("click", () => {
             lightbox.style.display = "none";
         });
 
-        // Close lightbox on outside click
         lightbox.addEventListener("click", (e) => {
             if (e.target === lightbox) {
                 lightbox.style.display = "none";
             }
-        });
-    </script>
-
-    <script>
-        const filterButtons = document.querySelectorAll(".filter-btn");
-        const galleryImages = document.querySelectorAll(".gallery-images img");
-
-        filterButtons.forEach((button) => {
-            button.addEventListener("click", () => {
-                // Remove 'active' class from all buttons
-                filterButtons.forEach((btn) => btn.classList.remove("active"));
-                // Add 'active' class to the clicked button
-                button.classList.add("active");
-
-                const filter = button.dataset.filter;
-
-                // Show/hide images based on filter
-                galleryImages.forEach((img) => {
-                    if (filter === "all" || img.dataset.category === filter) {
-                        img.classList.remove("hidden");
-                    } else {
-                        img.classList.add("hidden");
-                    }
-                });
-            });
         });
     </script>
 </body>
