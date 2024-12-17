@@ -1,23 +1,26 @@
-// Carousel Navigation
-const carouselImages = document.querySelector('.carousel-images');
-const images = Array.from(carouselImages.children);
-const prevBtn = document.querySelector('.prev-btn');
-const nextBtn = document.querySelector('.next-btn');
-let currentIndex = 0;
+document.addEventListener("DOMContentLoaded", function () {
+    const carouselImages = document.querySelectorAll('.carousel-images img');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
 
-function updateCarousel() {
-    const imageWidth = images[0].clientWidth;
-    carouselImages.style.transform = `translateX(${-currentIndex * imageWidth}px)`;
-}
+    let currentIndex = 0;
 
-nextBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % images.length;
-    updateCarousel();
+    // Show the correct image
+    function showImage(index) {
+        carouselImages.forEach((img, i) => {
+            img.style.transform = `translateX(-${index * 100}%)`;
+        });
+    }
+
+    // Previous button click
+    prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex > 0) ? currentIndex - 1 : carouselImages.length - 1;
+        showImage(currentIndex);
+    });
+
+    // Next button click
+    nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex < carouselImages.length - 1) ? currentIndex + 1 : 0;
+        showImage(currentIndex);
+    });
 });
-
-prevBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    updateCarousel();
-});
-
-window.addEventListener('resize', updateCarousel);
