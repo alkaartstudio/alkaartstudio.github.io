@@ -1,403 +1,175 @@
+/* Global Styles */
 body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: #f7f7f7;
+    font-family: 'Roboto', sans-serif; /* Primary font for the entire page */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    box-sizing: border-box; /* Include padding and border in width/height calculations */
+    background-color: #f7f7f7; /* Light gray background for a clean look */
 }
 
+/* Header Section */
 header {
-    position: sticky;
+    position: sticky; /* Keeps the header fixed at the top */
     top: 0;
-    z-index: 1000;
-    background-color: #333;
-    color: white;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensures header appears above other elements */
+    background-color: #333; /* Dark background color */
+    color: white; /* White text for contrast */
+    padding: 10px 20px; /* Add spacing inside the header */
+    display: flex; /* Align logo and navigation in a row */
+    justify-content: space-between; /* Space between logo and navigation */
+    align-items: center; /* Align items vertically */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
 header .logo {
-    display: flex;
-    align-items: center;
+    display: flex; /* Align logo and text in a row */
+    align-items: center; /* Center items vertically */
 }
 
 header .logo img {
-    height: 50px;
-    margin-right: 10px;
+    height: 50px; /* Fixed height for the logo image */
+    margin-right: 10px; /* Spacing between logo image and text */
 }
 
+/* Navigation Styles */
 nav ul {
-    list-style: none;
+    list-style: none; /* Remove default bullet points */
     padding: 0;
     margin: 0;
-    display: flex;
+    display: flex; /* Display navigation items in a row */
 }
 
 nav ul li {
-    margin: 0 15px;
+    margin: 0 15px; /* Add spacing between navigation items */
 }
 
 nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-weight: 500;
-    transition: color 0.3s;
+    text-decoration: none; /* Remove underline from links */
+    color: white; /* White text color */
+    font-weight: 500; /* Slightly bold text */
+    transition: color 0.3s, transform 0.3s ease; /* Smooth transitions for hover effects */
 }
 
 nav ul li a:hover {
-    color: #ffd700;
+    color: #ffd700; /* Highlight link with gold color on hover */
+    transform: translateY(-2px); /* Subtle lift effect */
 }
 
+/* Hero Section */
 .hero {
-    text-align: center;
-    background: url('images/banner_2.png') no-repeat center center/cover;
-    color: white;
-    padding: 100px 20px;
-    transition: background-color 0.3s ease, padding 0.3s ease;
+    text-align: center; /* Center align all text */
+    background: url('images/banner_2.png') no-repeat center center/cover; /* Full-screen background image */
+    color: white; /* White text for contrast */
+    padding: 100px 20px; /* Large padding for better spacing */
+    transition: background-color 0.3s ease, padding 0.3s ease; /* Smooth transition for padding changes */
 }
 
 .hero h1 {
-    font-family: 'Dancing Script', cursive; /* Changed font to Dancing Script */
-    font-size: 4rem; /* Increased size for better visibility */
+    font-family: 'Dancing Script', cursive; /* Elegant font for the main heading */
+    font-size: 4rem; /* Large font size for impact */
     margin: 0;
-    text-align: center;
 }
 
 .hero p {
-    font-size: 1.5rem;
-    margin: 20px 0;
+    font-size: 1.5rem; /* Slightly larger text for emphasis */
+    margin: 20px 0; /* Add spacing above and below */
 }
 
+/* Buttons */
 .btn {
-    padding: 10px 20px;
-    background-color: #ffd700;
-    color: #333;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: background-color 0.3s, transform 0.3s ease;
+    padding: 10px 20px; /* Add padding for click area */
+    background-color: #ffd700; /* Gold background color */
+    color: #333; /* Dark text color for contrast */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Bold text for emphasis */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s, transform 0.3s ease, opacity 0.3s ease; /* Smooth hover effects */
 }
 
 .btn:hover {
-    background-color: #e5c100;
-    transform: scale(1.1);
+    background-color: #e5c100; /* Slightly darker gold on hover */
+    transform: scale(1.1); /* Subtle zoom effect */
+    opacity: 0.9; /* Reduce opacity slightly */
 }
 
+/* Gallery Section */
 .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* Improved grid setup for artistic effect */
-    gap: 25px;
-    padding: 40px;
-    transition: grid-template-columns 0.3s ease-in-out;
+    display: grid; /* Use grid layout for images */
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* Responsive grid with minimum size */
+    gap: 25px; /* Spacing between items */
+    padding: 40px; /* Add padding around the gallery */
+    transition: grid-template-columns 0.3s ease-in-out; /* Smooth grid layout adjustments */
 }
 
 .gallery img {
-    width: 100%;
-    height: auto;
-    border-radius: 15px; /* Increased border-radius for a softer, artistic feel */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow for a more artistic look */
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    width: 100%; /* Ensure images fill the grid column */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 15px; /* Rounded corners for a soft look */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth hover effects */
 }
 
 .gallery img:hover {
-    transform: scale(1.1); /* Slight zoom effect for hover */
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover for a "pop" effect */
+    transform: scale(1.1); /* Slight zoom effect on hover */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+    opacity: 0.95; /* Slight opacity change */
 }
 
 .gallery h2 {
-    font-family: 'Dancing Script', cursive; /* Apply Dancing Script font to the gallery heading */
-    font-size: 2.5rem;
-    color: #333;
-    margin-bottom: 30px;
-    text-align: center; /* Center align the gallery title */
+    font-family: 'Dancing Script', cursive; /* Elegant font for section title */
+    font-size: 2.5rem; /* Larger font size for emphasis */
+    color: #333; /* Darker text color */
+    margin-bottom: 30px; /* Spacing below the title */
+    text-align: center; /* Center align the title */
 }
 
 .gallery-description {
-    font-size: 1.2rem;
-    text-align: center;
-    color: #777;
-    margin-top: 20px;
-    line-height: 1.6;
+    font-size: 1.2rem; /* Medium font size for readability */
+    text-align: center; /* Center align the description */
+    color: #777; /* Light gray text color */
+    margin-top: 20px; /* Spacing above */
+    line-height: 1.6; /* Better text readability */
 }
 
+/* Lightbox for Image Previews */
 .lightbox {
-    display: none;
-    position: fixed;
-    z-index: 2000;
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed position for full-screen view */
+    z-index: 2000; /* Ensure it appears above all elements */
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    justify-content: center;
-    align-items: center;
-    transition: opacity 0.3s ease;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    justify-content: center; /* Center the image horizontally */
+    align-items: center; /* Center the image vertically */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth opening/closing */
 }
 
 .lightbox img {
-    max-width: 80%;
-    max-height: 80%;
-    border-radius: 5px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    max-width: 80%; /* Limit width to 80% of the screen */
+    max-height: 80%; /* Limit height to 80% of the screen */
+    border-radius: 5px; /* Slightly rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
 }
 
 .lightbox .close {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    font-size: 40px;
-    color: white;
-    cursor: pointer;
+    position: absolute; /* Place close button over the lightbox */
+    top: 20px; /* Distance from the top */
+    right: 30px; /* Distance from the right */
+    font-size: 40px; /* Large close icon */
+    color: white; /* White color for contrast */
+    cursor: pointer; /* Pointer cursor on hover */
 }
 
-.lightbox-caption {
-    color: white;
-    text-align: center;
-    margin-top: 10px;
-    font-size: 18px;
-}
-
-.prev,
-.next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    color: white;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.prev {
-    left: 20px;
-}
-
-.next {
-    right: 20px;
-}
-
-/* About Section */
-.about {
-    padding: 40px 20px;
-    background-color: #fff;
-    text-align: center;
-    transition: padding 0.3s ease;
-}
-
-.about h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-}
-
-.about p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    margin: 0 auto;
-    max-width: 800px;
-}
-
-/* Categories Section */
-.categories {
-    padding: 40px 20px;
-    background-color: #f9f9f9;
-    text-align: center;
-    transition: background-color 0.3s ease;
-}
-
-.categories h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-.category {
-    margin: 20px auto;
-    max-width: 600px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.category h3 {
-    font-size: 1.5rem;
-    color: #555;
-    margin-bottom: 10px;
-}
-
-.category p {
-    font-size: 1rem;
-    color: #777;
-    margin-bottom: 15px;
-}
-
-.category img {
-    width: 100%;
-    height: auto;
-    border-radius: 4px;
-    margin-top: 10px;
-}
-
+/* Category Cards */
 .category:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
-}
-
-.gallery-images {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-}
-
-.gallery-images img {
-    width: 200px;
-    height: auto;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.gallery-images img.hidden {
-    opacity: 0;
-    transform: scale(0.8);
-    pointer-events: none;
+    transform: translateY(-10px); /* Lift effect on hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Enhance shadow */
 }
 
 /* Newsletter Section */
-.newsletter {
-    background-color: #f7f7f7;
-    padding: 40px 20px;
-    text-align: center;
-}
-
-.newsletter h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
-
-.newsletter p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-}
-
-.newsletter-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 400px;
-    margin: 0 auto;
-}
-
-.newsletter-form input {
-    padding: 10px;
-    margin-bottom: 15px;
-    width: 100%;
-    max-width: 350px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    font-size: 1rem;
-}
-
-.newsletter-form button {
-    padding: 10px 20px;
-    background-color: #ffd700;
-    color: #333;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
 .newsletter-form button:hover {
-    background-color: #e5c100;
+    background-color: #d6b900; /* Slightly darker gold */
+    transform: translateY(-2px); /* Subtle lift effect */
 }
-
-/* Contact Section */
-.contact {
-    background-color: #f7f7f7;
-    padding: 40px;
-    text-align: center;
-}
-
-.contact h2 {
-    font-size: 2rem;
-    margin-bottom: 40px;
-    text-align: center;
-}
-
-.contact .contact-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-}
-
-.contact .contact-left {
-    width: 45%;
-    text-align: left;
-}
-
-.contact .contact-right {
-    width: 45%;
-    text-align: center;
-}
-
-.contact ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.contact ul li {
-    margin: 10px 0;
-    font-size: 1.1rem;
-}
-
-.contact ul li a {
-    color: #333;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.contact ul li a:hover {
-    color: #ffd700;
-}
-
-.contact .social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    align-items: center;
-}
-
-.contact .social-icons a img {
-    width: 40px;
-    height: 40px;
-    transition: transform 0.3s;
-}
-
-.contact .social-icons a img:hover {
-    transform: scale(1.1);
-}
-
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #333;
-    color: white;
-}
-
-footer a {
-    color: #ffd700;
-    text-decoration: none;
-}
-
-/* Added smooth transitions, subtle hover effects, and layout updates */
