@@ -33,19 +33,23 @@
     </section>
 
     <section id="gallery" class="gallery">
-        <h2>Gallery</h2>
-        <!-- Gallery Images -->
-        <div class="gallery-images">
-            <img src="images/Artwork_2.png" alt="Starry Nights Canvas" data-category="canvas" data-caption="Starry Nights Canvas">
-            <img src="images/canvas2.jpg" alt="Canvas Painting 2" data-category="canvas">
-            <img src="images/Artwork_4.png" alt="Hand Painted Tote Bag" data-category="fabric">
-            <img src="images/fabric2.jpg" alt="Fabric Painting 2" data-category="fabric">
-            <img src="images/wedding1.jpg" alt="Wedding Decoration 1" data-category="wedding">
-            <img src="images/wedding2.jpg" alt="Wedding Decoration 2" data-category="wedding">
-            <img src="images/Artwork_1.png" alt="Cozy Corner Retreat_1" data-category="clay" data-caption="Cozy Corner Retreat_1">
-            <img src="images/Artwork_3.png" alt="Cozy Corner Retreat_2" data-category="clay" data-caption="Cozy Corner Retreat_2">
+    <h2 class="center-title">Gallery</h2>
+    
+    <!-- Main Carousel -->
+    <div class="carousel">
+        <div class="carousel-images">
+            <img src="images/Artwork_2.png" alt="Starry Nights Canvas">
+            <img src="images/canvas2.jpg" alt="Canvas Painting 2">
+            <img src="images/Artwork_4.png" alt="Hand Painted Tote Bag">
+            <img src="images/fabric2.jpg" alt="Fabric Painting 2">
+            <img src="images/wedding1.jpg" alt="Wedding Decoration 1">
+            <img src="images/wedding2.jpg" alt="Wedding Decoration 2">
         </div>
+        <button class="prev-btn">❮</button>
+        <button class="next-btn">❯</button>
+    </div>
     </section>
+
 
     <!-- Lightbox Structure -->
     <div id="lightbox" class="lightbox">
@@ -208,6 +212,32 @@
             });
         });
     </script>
+    <script>
+    const carouselImages = document.querySelector('.carousel-images');
+    const images = document.querySelectorAll('.carousel-images img');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+
+    let index = 0;
+
+    function updateCarousel() {
+        const imageWidth = images[0].clientWidth;
+        carouselImages.style.transform = `translateX(${-index * imageWidth}px)`;
+    }
+
+    nextBtn.addEventListener('click', () => {
+        index = (index + 1) % images.length; // Loop to the start
+        updateCarousel();
+    });
+
+    prevBtn.addEventListener('click', () => {
+        index = (index - 1 + images.length) % images.length; // Loop to the end
+        updateCarousel();
+    });
+
+    window.addEventListener('resize', updateCarousel);
+    </script>
+
     
 </body>
 
