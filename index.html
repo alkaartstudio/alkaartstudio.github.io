@@ -1,83 +1,143 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alka's Art Studio</title>
-    <link rel="icon" href="images/favicon.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <title>Contact Us - Alka Art Studio</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        header {
+            background-color: #8abeb2;
+            padding: 10px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            color: #fff;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #444;
+        }
+        nav ul li {
+            display: inline;
+        }
+        nav ul li a {
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        nav ul li a:hover {
+            background-color: #8abeb2;
+        }
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+        footer {
+            background-color: #444;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .contact-form {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .contact-form button {
+            background-color: #8abeb2;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .contact-form button:hover {
+            background-color: #6d9a90;
+        }
+        .social-icons a {
+            display: inline-block;
+            margin: 10px;
+            color: #8abeb2;
+            font-size: 24px;
+        }
+    </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <div class="logo">
-            <img src="images/Logo_1.png" alt="Alka's Art Studio Logo">
-            <span>Alka's Art Studio</span>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#categories">Categories</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+        <h1>Welcome to Alka Art Studio</h1>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Welcome to Alka's Art Studio</h1>
-        <p>Explore the beauty of handmade art and creative craftsmanship.</p>
-        <a href="#gallery" class="btn">Explore Gallery</a>
-    </section>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#workshops">Workshops</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="gallery">
-        <h2>Gallery</h2>
-        <div class="carousel">
-            <div class="carousel-images">
-                <img src="images/Artwork_2.png" alt="Starry Nights Canvas">
-                <img src="images/canvas2.jpg" alt="Canvas Painting 2">
-                <img src="images/Artwork_4.png" alt="Hand Painted Tote Bag">
-                <!-- Additional images... -->
-            </div>
-            <button class="prev-btn" aria-label="Previous slide">❮</button>
-            <button class="next-btn" aria-label="Next slide">❯</button>
+    <!-- Main Content -->
+    <div class="content" id="contact">
+        <h2>Get in Touch</h2>
+        <p>For collaborations, workshops, and custom art, reach out to us!</p>
+        
+        <div class="contact-form">
+            <form action="mailto:alkaartstudio@gmail.com" method="post" enctype="text/plain">
+                <label>Your Name</label>
+                <input type="text" name="name" placeholder="Enter your name" required>
+
+                <label>Your Email</label>
+                <input type="email" name="email" placeholder="Enter your email" required>
+
+                <label>Message</label>
+                <textarea rows="5" name="message" placeholder="Your message here..." required></textarea>
+
+                <button type="submit">Send</button>
+            </form>
         </div>
-    </section>
+    </div>
 
-    <!-- Categories Section -->
-    <section id="categories" class="categories">
-        <h2>Categories</h2>
-        <div class="category">
-            <h3>Canvas Painting</h3>
-            <p>Vibrant, handcrafted canvas paintings to transform your space.</p>
-            <img src="images/Artwork_2.png" alt="Canvas Painting">
+    <!-- Social Icons -->
+    <div class="content">
+        <h3>Connect with Us</h3>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/alkaartjournal/" target="_blank"><i class="fa fa-instagram"></i></a>
+            <a href="https://www.facebook.com/alkaartjournal/" target="_blank"><i class="fa fa-facebook"></i></a>
+            <a href="https://www.youtube.com/alkaartjournal" target="_blank"><i class="fa fa-youtube"></i></a>
         </div>
-        <!-- Additional categories... -->
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <h2>About Us</h2>
-        <p>Alka's Art Studio blends traditional and contemporary art, bringing you exquisite handcrafted pieces.</p>
-    </section>
-
-    <!-- Newsletter Section -->
-    <section id="newsletter" class="newsletter">
-        <h2>Subscribe to Our Newsletter</h2>
-        <form action="subscribe.php" method="POST" class="newsletter-form">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <button type="submit" class="btn">Subscribe</button>
-        </form>
-    </section>
+    </div>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Alka's Art Studio | <a href="#contact">Contact Us</a></p>
+        <p>&copy; 2024 Alka Art Studio. All rights reserved.</p>
     </footer>
-    
-    <script src="script.js"></script>
 </body>
 </html>
