@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alka's Art Studio</title>
-    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="icon" href="images/favicon.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
     <header>
         <div class="logo">
@@ -26,83 +24,48 @@
         </nav>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero">
         <h1>Welcome to Alka's Art Studio</h1>
         <p>Explore the beauty of handmade art and creative craftsmanship.</p>
         <a href="#gallery" class="btn">Explore Gallery</a>
     </section>
 
+    <!-- Gallery Section -->
     <section id="gallery" class="gallery">
-    <h2 class="center-title">Gallery</h2>
-    
-    <!-- Main Carousel -->
-    <div class="carousel">
-        <div class="carousel-images">
-            <img src="images/Artwork_2.png" alt="Starry Nights Canvas">
-            <img src="images/canvas2.jpg" alt="Canvas Painting 2">
-            <img src="images/Artwork_4.png" alt="Hand Painted Tote Bag">
-            <img src="images/fabric2.jpg" alt="Fabric Painting 2">
-            <img src="images/wedding1.jpg" alt="Wedding Decoration 1">
-            <img src="images/wedding2.jpg" alt="Wedding Decoration 2">
+        <h2>Gallery</h2>
+        <div class="carousel">
+            <div class="carousel-images">
+                <img src="images/Artwork_2.png" alt="Starry Nights Canvas">
+                <img src="images/canvas2.jpg" alt="Canvas Painting 2">
+                <img src="images/Artwork_4.png" alt="Hand Painted Tote Bag">
+                <!-- Additional images... -->
+            </div>
+            <button class="prev-btn" aria-label="Previous slide">❮</button>
+            <button class="next-btn" aria-label="Next slide">❯</button>
         </div>
-        <button class="prev-btn">❮</button>
-        <button class="next-btn">❯</button>
-    </div>
     </section>
 
-
-    <!-- Lightbox Structure -->
-    <div id="lightbox" class="lightbox">
-        <span class="close">&times;</span>
-        <img class="lightbox-image" alt="Selected Artwork">
-        <p class="lightbox-caption"></p>
-        <a class="prev">&#10094;</a>
-        <a class="next">&#10095;</a>
-    </div>
-
+    <!-- Categories Section -->
     <section id="categories" class="categories">
         <h2>Categories</h2>
         <div class="category">
             <h3>Canvas Painting</h3>
-            <p>Explore our exquisite collection of canvas paintings that bring life to your walls with vibrant colors and creativity.</p>
+            <p>Vibrant, handcrafted canvas paintings to transform your space.</p>
             <img src="images/Artwork_2.png" alt="Canvas Painting">
         </div>
-        <div class="category">
-            <h3>Fabric Painting</h3>
-            <p>Discover the charm of fabric painting, blending art and fashion seamlessly with detailed, handcrafted designs.</p>
-            <img src="images/Artwork_4.png" alt="Fabric Painting">
-        </div>
-        <div class="category">
-            <h3>Clay Art</h3>
-            <p>Explore the beauty of clay art, where creativity takes shape in stunning sculptures and handcrafted pottery, bringing life to timeless designs.</p>
-            <img src="images/Artwork_1.png" alt="Clay Art_1">
-            <img src="images/Artwork_3.png" alt="Clay Art_2">
-        </div>
-
-        <div class="category">
-            <h3>Wedding Gifts Decoration</h3>
-            <p>Make your special moments unforgettable with our unique and personalized wedding gift decorations.</p>
-            <img src="images/wedding_gifts.jpg" alt="Wedding Gifts Decoration">
-        </div>
+        <!-- Additional categories... -->
     </section>
 
+    <!-- About Section -->
     <section id="about" class="about">
         <h2>About Us</h2>
-        <p>Welcome to <strong>Alka's Art Studio</strong>, a space where creativity meets craftsmanship! My name is Alka, and I've been immersed in the world of art for over two decades. With a deep passion for both traditional and contemporary forms of art, I’ve dedicated myself to mastering various mediums, from painting and sculpture to mixed-media creations.</p>
-
-        <p>At Alka's Art Studio, art isn't just something I create—it's a way of life, a method of self-expression, and a journey of exploration. Over the years, I’ve had the privilege of teaching and inspiring countless individuals through workshops and vocational training. As a registered Fevicryl teacher for over 15 years, I have shared my knowledge and love for art with students, encouraging them to think outside the box and experiment with unique materials and techniques.</p>
-
-        <p>This online gallery serves as an extension of my passion for creativity, offering a collection of my latest works and the opportunity to purchase and enjoy art that can brighten up any space. Each piece in the collection reflects my personal journey, artistic expression, and deep connection to the materials I work with. I believe that art has the power to transform both spaces and souls, which is why every creation is carefully crafted with attention to detail and love.</p>
-
-        <p>Whether you're looking to add a special piece of artwork to your collection, seeking inspiration, or simply admiring the beauty of handmade creations, I hope my art brings joy, creativity, and positive energy to your life.</p>
-
-        <p>Feel free to browse through my gallery, and thank you for being a part of this artistic journey with me.</p>
-
+        <p>Alka's Art Studio blends traditional and contemporary art, bringing you exquisite handcrafted pieces.</p>
     </section>
 
+    <!-- Newsletter Section -->
     <section id="newsletter" class="newsletter">
         <h2>Subscribe to Our Newsletter</h2>
-        <p>Stay updated with the latest art collections, workshops, and offers from Alka's Art Studio.</p>
         <form action="subscribe.php" method="POST" class="newsletter-form">
             <input type="text" name="name" placeholder="Your Name" required>
             <input type="email" name="email" placeholder="Your Email" required>
@@ -110,135 +73,11 @@
         </form>
     </section>
 
-    <section id="contact" class="contact">
-        <h2>Contact Us</h2>
-        <div class="contact-container">
-            <div class="contact-left">
-                <ul>
-                    <li>Email: <a href="mailto:info.alkaartstudio@gmail.com">info.alkaartstudio@gmail.com</a></li>
-                    <li>Mobile: <a href="tel:+919034253673">+91-9034253673</a></li>
-                </ul>
-            </div>
-            <div class="contact-right">
-                <div class="social-icons">
-                    <a href="https://www.youtube.com/@AlkasArtJournal" target="_blank"><img src="images/youtube.png" alt="YouTube"></a>
-                    <a href="https://in.pinterest.com/alka_art_journal/" target="_blank"><img src="images/pinterest.png" alt="Pinterest"></a>
-                    <a href="https://www.facebook.com/AlkaArtJournal/" target="_blank"><img src="images/facebook.png" alt="Facebook"></a>
-                    <a href="https://www.instagram.com/alka_art_journal/" target="_blank"><img src="images/instagram.png" alt="Instagram"></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    <!-- Footer -->
     <footer>
         <p>&copy; 2024 Alka's Art Studio | <a href="#contact">Contact Us</a></p>
     </footer>
-
-    <script>
-        // Lightbox elements
-        const lightbox = document.getElementById("lightbox");
-        const lightboxImage = document.querySelector(".lightbox-image");
-        const lightboxCaption = document.querySelector(".lightbox-caption");
-        const galleryImages = document.querySelectorAll(".gallery img");
-        const prevBtn = document.querySelector(".prev");
-        const nextBtn = document.querySelector(".next");
-        const closeBtn = document.querySelector(".close");
-
-        let currentIndex = 0;
-
-        // Show lightbox with selected image
-        galleryImages.forEach((img, index) => {
-            img.addEventListener("click", () => {
-                currentIndex = index;
-                updateLightbox();
-                lightbox.style.display = "flex";
-            });
-        });
-
-        // Update lightbox content
-        function updateLightbox() {
-            const selectedImage = galleryImages[currentIndex];
-            lightboxImage.src = selectedImage.src;
-            lightboxImage.alt = selectedImage.alt;
-            lightboxCaption.textContent = selectedImage.dataset.caption || "No caption available";
-        }
-
-        // Navigate to previous image
-        prevBtn.addEventListener("click", () => {
-            currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-            updateLightbox();
-        });
-
-        // Navigate to next image
-        nextBtn.addEventListener("click", () => {
-            currentIndex = (currentIndex + 1) % galleryImages.length;
-            updateLightbox();
-        });
-
-        // Close lightbox
-        closeBtn.addEventListener("click", () => {
-            lightbox.style.display = "none";
-        });
-
-        // Close lightbox on outside click
-        lightbox.addEventListener("click", (e) => {
-            if (e.target === lightbox) {
-                lightbox.style.display = "none";
-            }
-        });
-    </script>
     
-    <script>
-        const filterButtons = document.querySelectorAll(".filter-btn");
-        const galleryImages = document.querySelectorAll(".gallery-images img");
-
-        filterButtons.forEach((button) => {
-            button.addEventListener("click", () => {
-                // Remove 'active' class from all buttons
-                filterButtons.forEach((btn) => btn.classList.remove("active"));
-                // Add 'active' class to the clicked button
-                button.classList.add("active");
-
-                const filter = button.dataset.filter;
-
-                // Show/hide images based on filter
-                galleryImages.forEach((img) => {
-                    if (filter === "all" || img.dataset.category === filter) {
-                        img.classList.remove("hidden");
-                    } else {
-                        img.classList.add("hidden");
-                    }
-                });
-            });
-        });
-    </script>
-    <script>
-    const carouselImages = document.querySelector('.carousel-images');
-    const images = document.querySelectorAll('.carousel-images img');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
-
-    let index = 0;
-
-    function updateCarousel() {
-        const imageWidth = images[0].clientWidth;
-        carouselImages.style.transform = `translateX(${-index * imageWidth}px)`;
-    }
-
-    nextBtn.addEventListener('click', () => {
-        index = (index + 1) % images.length; // Loop to the start
-        updateCarousel();
-    });
-
-    prevBtn.addEventListener('click', () => {
-        index = (index - 1 + images.length) % images.length; // Loop to the end
-        updateCarousel();
-    });
-
-    window.addEventListener('resize', updateCarousel);
-    </script>
-
-    
+    <script src="script.js"></script>
 </body>
-
 </html>
