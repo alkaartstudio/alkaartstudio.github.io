@@ -17,12 +17,14 @@
             <span>Alka's Art Studio</span>
         </div>
         <nav>
-            <ul>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#categories">Categories</a></li>
-                <li><a href="#store">Store</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+            <ul id="menu-menu-1" class="nav-menu">
+                <li><a href="https://alkaartstudio.com/">Home</a></li>
+                <li><a href="https://alkaartstudio.com/gallery/">Gallery</a></li>
+                <li><a href="https://alkaartstudio.com/categories/">Categories</a></li>
+                <li><a href="https://alka-art-studio.mini.site">Store</a></li> <!-- Updated Store Link -->
+                <li><a href="https://alkaartstudio.com/portfolio/">Portfolio</a></li>
+                <li><a href="https://alkaartstudio.com/about/">About</a></li>
+                <li><a href="https://alkaartstudio.com/contact/">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -94,7 +96,6 @@
         <p>Whether you're looking to add a special piece of artwork to your collection, seeking inspiration, or simply admiring the beauty of handmade creations, I hope my art brings joy, creativity, and positive energy to your life.</p>
 
         <p>Feel free to browse through my gallery, and thank you for being a part of this artistic journey with me.</p>
-
     </section>
 
     <section id="newsletter" class="newsletter">
@@ -103,7 +104,7 @@
         <form action="subscribe.php" method="POST" class="newsletter-form">
             <input type="text" name="name" placeholder="Your Name" required>
             <input type="email" name="email" placeholder="Your Email" required>
-            
+            <button type="submit" class="btn">Subscribe</button>
         </form>
     </section>
 
@@ -128,7 +129,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2024 Alka's Art Studio | <a href="#contact">Contact Us</a></p>
+        <p>&copy; 2024 Alka's Art Studio | <a href="https://alkaartstudio.com/contact/">Contact Us</a></p>
     </footer>
 
     <script>
@@ -184,7 +185,7 @@
             }
         });
     </script>
-    
+
     <script>
         const filterButtons = document.querySelectorAll(".filter-btn");
         const galleryImages = document.querySelectorAll(".gallery-images img");
@@ -209,7 +210,6 @@
             });
         });
     </script>
-    
 </body>
 
 </html>
