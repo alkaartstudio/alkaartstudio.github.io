@@ -1,4 +1,4 @@
-/* General styles */
+/* General Styles */
 * {
     margin: 0;
     padding: 0;
@@ -7,7 +7,8 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    line-height: 1.6;
+    color: #333;
 }
 
 a {
@@ -15,145 +16,158 @@ a {
     color: inherit;
 }
 
-h2 {
-    text-align: center;
-    margin: 20px 0;
-}
-
-/* Header styles */
+/* Header */
 header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 20px;
     background-color: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-header .logo {
+.logo-section {
     display: flex;
     align-items: center;
 }
 
-header .logo img {
+.logo-section img {
     width: 50px;
     margin-right: 10px;
 }
 
-header nav ul {
-    list-style: none;
+nav ul {
     display: flex;
-    gap: 20px;
+    list-style-type: none;
 }
 
-header nav a {
-    font-size: 16px;
-    color: #333;
+nav ul li {
+    margin: 0 15px;
 }
 
-header nav a:hover {
-    color: #e91e63;
+nav ul li a {
+    font-size: 18px;
+    font-weight: bold;
 }
 
 /* Hero Section */
 .hero-section {
-    background-image: url('images/banner.png');
-    background-size: cover;
-    background-position: center;
+    background: url('images/banner.png') no-repeat center center/cover;
+    color: #fff;
     text-align: center;
-    padding: 100px 20px;
-    color: white;
+    padding: 100px 0;
 }
 
 .hero-section h1 {
-    font-size: 50px;
-    margin-bottom: 20px;
+    font-size: 48px;
 }
 
 .hero-section h2 {
-    font-size: 30px;
+    font-size: 24px;
+    margin-top: 10px;
 }
 
-/* Section styles */
-section {
-    padding: 40px 20px;
-    margin: 20px 0;
+/* Gallery Section */
+.gallery-section {
+    padding: 50px 10%;
+    text-align: center;
 }
 
-section .gallery-images {
-    display: flex;
+.gallery-section h2 {
+    margin-bottom: 30px;
+}
+
+.masonry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 10px;
-    justify-content: center;
 }
 
-section .gallery-images img {
-    width: 200px;
+.masonry-grid img {
+    width: 100%;
     height: auto;
-    object-fit: cover;
     border-radius: 8px;
-    transition: transform 0.3s ease;
 }
 
-section .gallery-images img:hover {
-    transform: scale(1.1);
+/* Workshops Section */
+.workshops-section {
+    padding: 50px;
+    text-align: center;
 }
 
-/* Form styles */
-form {
+/* Shop Section */
+.shop-section {
+    padding: 50px;
+    text-align: center;
+}
+
+.shop-section a {
+    font-size: 20px;
+    color: #333;
+    padding: 10px 20px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.shop-section a:hover {
+    background-color: #ddd;
+}
+
+/* About Section */
+.about-section {
     display: flex;
-    flex-direction: column;
-    max-width: 600px;
-    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
 }
 
-form input,
-form textarea {
-    margin-bottom: 15px;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
+.about-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-form button {
-    background-color: #e91e63;
-    color: white;
-    padding: 15px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.about-text {
+    width: 60%;
+    font-size: 18px;
 }
 
-form button:hover {
-    background-color: #c2185b;
+.about-image .about-head {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
 }
 
-/* Footer styles */
+/* Contact Section */
+.contact-section {
+    padding: 50px;
+    text-align: center;
+}
+
+/* Footer Section */
 footer {
     display: flex;
     justify-content: space-between;
     padding: 20px;
     background-color: #333;
-    color: white;
+    color: #fff;
 }
 
-footer .footer-left,
-footer .footer-center,
-footer .footer-right {
-    display: flex;
-    flex-direction: column;
+.footer-left, .footer-center, .footer-right {
+    width: 33%;
+    text-align: center;
 }
 
-footer .footer-right a {
-    margin-bottom: 10px;
+.social-icons a {
+    margin: 0 10px;
 }
 
-footer .footer-right img {
+.social-icons img {
     width: 30px;
-    margin: 5px;
-    transition: transform 0.3s;
+    height: 30px;
+    transition: opacity 0.3s;
 }
 
-footer .footer-right img:hover {
-    transform: scale(1.2);
+.social-icons img:hover {
+    opacity: 0.7;
 }
