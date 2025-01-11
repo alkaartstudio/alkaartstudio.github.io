@@ -31,15 +31,26 @@ header {
 }
 
 .logo-section img {
-    width: 40px;  /* Adjust the size to fit the header */
-    height: auto;
+    width: 40px;
+    height: 40px;
     margin-right: 10px;
 }
 
-.logo-section h1 {
-    font-size: 24px; /* Adjust the font size of the title */
+nav ul {
+    display: flex;
+    list-style-type: none;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    font-size: 18px;
     font-weight: bold;
 }
+
+
 
 
 /* Hero Section */
