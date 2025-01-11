@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alka's Art Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        header .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            color: #f39c12;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('images/banner_3.png') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin: 10px 0 20px;
+        }
+
+        .hero .btn {
+            background-color: #f39c12;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero .btn:hover {
+            background-color: #e67e22;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 50px 20px;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .gallery h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .gallery-images img {
+            max-width: 100%;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 80%;
+        }
+
+        .lightbox .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2rem;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        /* Categories Section */
+        .categories {
+            background-color: #fafafa;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .categories .category img {
+            max-width: 300px;
+            margin: 15px 0;
+        }
+
+        /* About Section */
+        .about {
+            padding: 50px 20px;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="images/Logo_1.png" alt="Alka's Art Studio Logo">
+            <span>Alka's Art Studio</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="https://alkaartstudio.github.io/">Home</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="https://alka-art-studio.mini.site">Store</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to Alka's Art Studio</h1>
+        <p>Explore the beauty of handmade art and creative craftsmanship.</p>
+        <a href="https://alka-art-studio.mini.site" class="btn">Shop Now</a>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <h2>Gallery</h2>
+        <div class="gallery-images">
+            <img src="images/Artwork_2.png" alt="Starry Nights Canvas">
+            <img src="images/Artwork_4.png" alt="Hand Painted Tote Bag">
+            <img src="images/Artwork_1.png" alt="Cozy Corner Retreat">
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <span class="close">&times;</span>
+        <img id="lightbox-img" src="" alt="">
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2>About Us</h2>
+        <p>Welcome to Alka's Art Studio, a space where creativity meets craftsmanship. Dive into the world of handmade art, from canvases to clay sculptures.</p>
+    </section>
+
+    
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-container">
+            <div class="contact-left">
+                <ul>
+                    <li>Email: <a href="mailto:alka.art.journal@gmail.com">alka.art.journal@gmail.com</a></li>
+                    <li>Mobile: <a href="tel:+919034253673">+91-9034253673</a></li>
+                </ul>
+            </div>
+            <div class="contact-right">
+                <div class="social-icons">
+                    <a href="https://www.youtube.com/@AlkasArtJournal" target="_blank"><img src="images/youtube.png" alt="YouTube"></a>
+                    <a href="https://in.pinterest.com/alka_art_journal/" target="_blank"><img src="images/pinterest.png" alt="Pinterest"></a>
+                    <a href="https://www.facebook.com/AlkaArtJournal/" target="_blank"><img src="images/facebook.png" alt="Facebook"></a>
+                    <a href="https://www.instagram.com/alka_art_journal/" target="_blank"><img src="images/instagram.png" alt="Instagram"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Alka's Art Studio | <a href="#contact">Contact Us</a></p>
+    </footer>
+
+
+    <!-- Lightbox Script -->
+    <script>
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+        const closeBtn = document.querySelector(".close");
+
+        document.querySelectorAll(".gallery-images img").forEach((img) => {
+            img.addEventListener("click", () => {
+                lightbox.style.display = "flex";
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+            });
+        });
+
+        closeBtn.addEventListener("click", () => {
+            lightbox.style.display = "none";
+        });
+
+        lightbox.addEventListener("click", (e) => {
+            if (e.target === lightbox) {
+                lightbox.style.display = "none";
+            }
+        });
+    </script>
+</body>
+
+</html>
