@@ -3,93 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alka Art Studio</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Alka's Art Studio</title>
+    <link rel="icon" href="images/favicon.png" type="image/png">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
 <body>
-    <!-- Header Section -->
     <header>
-        <div class="header-container">
-            <div class="logo">
-                <img src="images/Logo.png" alt="Alka Art Studio Logo" style="width: 100px; height: auto;">
-                <span>Alka Art Studio</span>
-            </div>
-            <nav>
-                <a href="#home">Home</a>
-                <a href="#gallery">Gallery</a>
-                <a href="https://alka-art-studio.mini.site" target="_blank">Shop</a>
-                <a href="#workshops">Workshops/Events</a>
-                <a href="#contact">Contact Us</a>
-                <a href="#about">About Us</a>
-            </nav>
+        <div class="logo">
+            <img src="images/Logo.png" alt="Alka's Art Studio Logo">
+            <span>Alka Art Studio</span>
         </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#workshops">Workshops/Events</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="#about">About Us</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero" style="background-image: url('images/banner.png');">
-        <div class="hero-text" style="text-align: center;">
-            <h1>Welcome to Alka's Art Studio</h1>
-            <h2>Explore the beauty of handmade art and creative craftsmanship.</h2>
+    <section id="hero" class="hero-section">
+        <h1>Welcome to Alka's Art Studio</h1>
+        <h2>Explore the beauty of handmade art and creative craftsmanship.</h2>
+    </section>
+
+    <section id="home">
+        <div class="content">
+            <h2>Overview of Alka's Art Journal and Mission</h2>
+            <p>At Alka's Art Studio, we aim to bring the world closer through the timeless beauty of art. Our mission is to inspire creativity, provide unique handmade art pieces, and host engaging workshops to share the magic of craftsmanship.</p>
         </div>
     </section>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Gallery Section -->
-        <section id="gallery">
-            <h2>Gallery</h2>
-            <p>Showcase of our finest digital art and paintings.</p>
-            <div class="gallery-grid">
-                <!-- Placeholder for artwork thumbnails -->
-                <img src="images/art1.png" alt="Artwork 1" style="width: 200px; height: auto;">
-                <img src="images/art2.png" alt="Artwork 2" style="width: 200px; height: auto;">
-                <img src="images/art3.png" alt="Artwork 3" style="width: 200px; height: auto;">
-            </div>
-        </section>
+    <section id="gallery">
+        <h2>Gallery</h2>
+        <p>Discover a stunning collection of digital art and paintings.</p>
+        <div class="gallery-images">
+            <!-- Add images dynamically as per your gallery -->
+            <img src="images/art1.jpg" alt="Art 1">
+            <img src="images/art2.jpg" alt="Art 2">
+            <img src="images/art3.jpg" alt="Art 3">
+        </div>
+    </section>
 
-        <!-- Workshops Section -->
-        <section id="workshops">
-            <h2>Workshops/Events</h2>
-            <p>Join our upcoming workshops and events to learn and create!</p>
-            <ul>
-                <li><strong>Watercolor Painting:</strong> Date - Details</li>
-                <li><strong>DIY Crafts:</strong> Date - Details</li>
-                <li><strong>Art Journaling:</strong> Date - Details</li>
-            </ul>
-        </section>
+    <section id="shop">
+        <h2>Shop</h2>
+        <p>Explore our online shop for exclusive handmade art pieces. <a href="https://alka-art-studio.mini.site" target="_blank">Visit Shop</a></p>
+    </section>
 
-        <!-- About Us Section -->
-        <section id="about">
-            <h2>About Us</h2>
-            <p>Alka's Art Studio is dedicated to promoting handmade art and nurturing creativity in people of all ages. Our mission is to bring art closer to everyone.</p>
-        </section>
-    </main>
+    <section id="workshops">
+        <h2>Workshops/Events</h2>
+        <p>Stay tuned for upcoming workshops and art events that you can participate in!</p>
+    </section>
 
-    <!-- Footer Section -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form action="mailto:info.alkaartstudio@gmail.com" method="POST" enctype="text/plain">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <p>Alka's Art Journal is a creative hub for art lovers. Our art pieces are crafted with passion and care. Join us in our journey of artistic exploration and experience art in a new light.</p>
+    </section>
+
     <footer>
-        <div class="footer-container">
-            <!-- Contact Us -->
-            <div class="footer-column">
-                <h3>Contact Us</h3>
-                <p><a href="mailto:info.alkaartstudio@gmail.com">info.alkaartstudio@gmail.com</a></p>
-            </div>
-
-            <!-- Copyright -->
-            <div class="footer-column">
-                <p>&copy; 2025 Alka's Art Studio</p>
-            </div>
-
-            <!-- Follow Us -->
-            <div class="footer-column">
-                <h3>Follow Us</h3>
-                <div class="social-icons">
-                    <a href="https://www.youtube.com/@AlkasArtJournal" target="_blank"><img src="images/youtube.png" alt="YouTube" style="width: 30px; height: auto;"></a>
-                    <a href="https://www.facebook.com/AlkaArtJournal/" target="_blank"><img src="images/facebook.png" alt="Facebook" style="width: 30px; height: auto;"></a>
-                    <a href="https://in.pinterest.com/alka_art_journal/" target="_blank"><img src="images/pinterest.png" alt="Pinterest" style="width: 30px; height: auto;"></a>
-                    <a href="https://www.instagram.com/alka_art_journal/" target="_blank"><img src="images/instagram.png" alt="Instagram" style="width: 30px; height: auto;"></a>
-                </div>
-            </div>
+        <div class="footer-left">
+            <p>Gmail: <a href="mailto:info.alkaartstudio@gmail.com">info.alkaartstudio@gmail.com</a></p>
+        </div>
+        <div class="footer-center">
+            <p>&copy; 2025 Alka's Art Studio. All rights reserved.</p>
+        </div>
+        <div class="footer-right">
+            <p>Follow us:</p>
+            <a href="https://www.youtube.com/@AlkasArtJournal" target="_blank"><img src="images/youtube.png" alt="YouTube"></a>
+            <a href="https://in.pinterest.com/alka_art_journal/" target="_blank"><img src="images/pinterest.png" alt="Pinterest"></a>
+            <a href="https://www.facebook.com/AlkaArtJournal/" target="_blank"><img src="images/facebook.png" alt="Facebook"></a>
+            <a href="https://www.instagram.com/alka_art_journal/" target="_blank"><img src="images/instagram.png" alt="Instagram"></a>
         </div>
     </footer>
 </body>
