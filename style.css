@@ -89,6 +89,34 @@ nav ul li a {
     border-radius: 8px;
 }
 
+/* Video Section */
+.video-section {
+    text-align: center;
+    padding: 50px 10%;
+}
+
+.video-container {
+    display: flex;
+    justify-content: center;
+}
+
+.video-container iframe {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 100%;
+}
+
+<section id="video" class="video-section">
+    <h2>Featured Video</h2>
+    <div class="video-container">
+        <iframe width="80%" height="400px"
+            src="https://www.youtube-nocookie.com/embed/S9khYHSaskU?si=kEc1YwIBWMdwDDI-"
+            frameborder="0" allowfullscreen>
+        </iframe>
+    </div>
+</section>
+
+
 /* Workshops Section */
 .workshops-section {
     padding: 50px;
