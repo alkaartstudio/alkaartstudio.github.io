@@ -52,18 +52,26 @@
 
     
     <script>
-    // Auto-load 40 images into galleryGrid
-    const galleryGrid = document.getElementById('galleryGrid');
-    for (let i = 1; i <= 20; i++) {
-        const img = document.createElement('img');
-        img.src = `images/Artwork/image${i}.jpg`; // Assuming your images are named image1.jpg, image2.jpg, etc.
-        img.alt = `Artwork ${i}`;
-        img.style.width = '100%';
-        img.style.borderRadius = '12px';
-        img.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
-        galleryGrid.appendChild(img);
-    }
+        // Auto-load 20 images into galleryGrid
+        const galleryGrid = document.getElementById('galleryGrid');
+        for (let i = 1; i <= 20; i++) {
+            const img = document.createElement('img');
+            img.src = `images/Artwork/image${i}.jpg`; // Try .jpg first
+            img.alt = `Artwork ${i}`;
+            img.style.width = '100%';
+            img.style.borderRadius = '12px';
+            img.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+    
+            // If .jpg fails to load, try .png
+            img.onerror = function () {
+                img.onerror = null; // Prevent infinite loop if .png also doesn't exist
+                img.src = `images/Artwork/image${i}.png`;
+            };
+    
+            galleryGrid.appendChild(img);
+        }
     </script>
+
 
 
     <!-- Workshops & Events Section -->
