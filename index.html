@@ -49,15 +49,36 @@
     </section>
 
     <!-- Video Section -->
-    <section id="video" class="video-section">
-        <h2>Featured Video</h2>
-        <div class="video-container">
-            <iframe width="80%" height="400px"
-                src="https://www.youtube.com/embed/S9khYHSaskU"
-                frameborder="0" allowfullscreen>
-            </iframe>
-        </div>
-    </section>
+<section id="video" class="video-section">
+  <h2>Featured Videos</h2>
+  <div class="video-container" id="youtube-videos" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+    <!-- Videos will be injected here -->
+  </div>
+</section>
+
+<script>
+const apiKey = 'AIzaSyBTLWNP6GZYfsJB2xiva44Eeu-h-HleXlY';
+const channelId = 'UCgNjWvgXUjg4UJafnjMSBww'; // Now using the correct channel ID
+const maxResults = 6; // How many videos you want to show
+
+fetch(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=${maxResults}`)
+  .then(response => response.json())
+  .then(data => {
+    const videos = data.items;
+    let output = '';
+    videos.forEach(video => {
+      if (video.id.kind === "youtube#video") { // Only embed actual videos
+        const videoId = video.id.videoId;
+        output += `
+          <iframe width="300" height="200" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen style="border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.2);"></iframe>
+        `;
+      }
+    });
+    document.getElementById('youtube-videos').innerHTML = output;
+  })
+  .catch(err => console.log('YouTube API error', err));
+</script>
+
 
     <!-- Shop Section -->
     <section id="shop" class="shop-section">
@@ -70,11 +91,9 @@
         <h2 class="text-center">About Us</h2>
         <div class="about-content">
             <div class="about-text">
-                <p>Welcome to Alka's Art Studio – a vibrant space where creativity meets craftsmanship. We are passionate about celebrating handmade art and providing a platform for artistic expression and inspiration.
-
-Founded by Alka, a seasoned artist with over 25 years of experience, our studio brings a rich blend of tradition, skill, and innovation. Alka is a specialist art teacher with Pidilite Industries and a guest lecturer at a government college, known for her expertise across diverse art forms. From intricate handicrafts to captivating paintings, she not only teaches but also shares her creations with the world.
-
-At Alka's Art Studio, we believe art is for everyone — whether you're here to learn, explore, or shop for one-of-a-kind handmade treasures.</p>
+                <p>Welcome to Alka's Art Studio – a vibrant space where creativity meets craftsmanship. We are passionate about celebrating handmade art and providing a platform for artistic expression and inspiration.</p>
+                <p>Founded by Alka, a seasoned artist with over 25 years of experience, our studio brings a rich blend of tradition, skill, and innovation. Alka is a specialist art teacher with Pidilite Industries and a guest lecturer at a government college, known for her expertise across diverse art forms. From intricate handicrafts to captivating paintings, she not only teaches but also shares her creations with the world.</p>
+                <p>At Alka's Art Studio, we believe art is for everyone — whether you're here to learn, explore, or shop for one-of-a-kind handmade treasures.</p>
             </div>
             <div class="about-image">
                 <img src="images/head.jpeg" alt="Head of Alka's Art Studio" class="about-head">
