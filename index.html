@@ -19,7 +19,7 @@
         <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
-                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
                 <li><a href="#workshops">Workshops & Events</a></li>
                 <li><a href="#shop">Shop</a></li>
                 <li><a href="#contact">Contact Us</a></li>
@@ -39,8 +39,32 @@
     <!-- Gallery Section -->
     <section id="gallery" class="gallery-section">
         <h2>Gallery</h2>
-        <div class="masonry-grid" id="galleryGrid"></div>
+        <div class="masonry-grid" id="galleryGrid">
+            <!-- 40 images loaded here -->
+        </div>
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="gallery.html" 
+               style="display: inline-block; background-color: #FC8019; color: #fff; padding: 12px 24px; font-size: 16px; font-weight: bold; border-radius: 8px; text-decoration: none; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+               See More ➡️
+            </a>
+        </div>
     </section>
+
+    
+    <script>
+    // Auto-load 40 images into galleryGrid
+    const galleryGrid = document.getElementById('galleryGrid');
+    for (let i = 1; i <= 40; i++) {
+        const img = document.createElement('img');
+        img.src = `images/gallery/image${i}.jpg`; // Assuming your images are named image1.jpg, image2.jpg, etc.
+        img.alt = `Artwork ${i}`;
+        img.style.width = '100%';
+        img.style.borderRadius = '12px';
+        img.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+        galleryGrid.appendChild(img);
+    }
+    </script>
+
 
     <!-- Workshops & Events Section -->
     <section id="workshops" class="workshops-section">
