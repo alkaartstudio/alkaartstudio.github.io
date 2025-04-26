@@ -51,27 +51,30 @@
     </section>
     
     <script>
-        // Load ONLY 20 images into galleryGrid
+        const totalImages = 29; // Same as gallery.html
         const galleryGrid = document.getElementById('galleryGrid');
-        const totalImagesToShow = 20; // Only 20 images
-        for (let i = 1; i <= totalImagesToShow; i++) {
+        const imagesToShow = 12; // Show latest 12 images
+    
+        const startImage = totalImages - imagesToShow + 1;
+    
+        for (let i = totalImages; i >= startImage; i--) {
             const img = document.createElement('img');
-            img.src = `images/Artwork/image${i}.jpg`; // Try .jpg first
+            img.src = `images/Artwork/image${i}.jpg`;
             img.alt = `Artwork Image ${i}`;
-            img.loading = 'lazy'; // Load faster
+            img.loading = 'lazy';
             img.style.width = '100%';
             img.style.borderRadius = '12px';
             img.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
     
-            // Fallback: If .jpg not found, try .png
             img.onerror = function () {
-                img.onerror = null; // Prevent infinite loop
+                img.onerror = null;
                 img.src = `images/Artwork/image${i}.png`;
             };
     
             galleryGrid.appendChild(img);
         }
     </script>
+
 
 
 
