@@ -21,7 +21,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
                 <li><a href="#workshops">Workshops & Events</a></li>
-                <li><a href="#shop">Shop</a></li>
+                <li><a href="https://alka-art-studio.mini.site">Shop</a></li>
                 <li><a href="#contact">Contact Us</a></li>
                 <li><a href="#about">About Us</a></li>
             </ul>
@@ -40,37 +40,39 @@
     <section id="gallery" class="gallery-section">
         <h2>Gallery</h2>
         <div class="masonry-grid" id="galleryGrid">
-            <!-- 40 images loaded here -->
+            <!-- Only 20 images will be loaded here -->
         </div>
         <div style="text-align: center; margin-top: 30px;">
             <a href="gallery.html" 
-               style="display: inline-block; background-color: #FC8019; color: #fff; padding: 12px 24px; font-size: 16px; font-weight: bold; border-radius: 8px; text-decoration: none; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
-               See More ➡️
+               style="display: inline-block; background-color: #A71E52; color: #fff; padding: 12px 24px; font-size: 16px; font-weight: bold; border-radius: 8px; text-decoration: none; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+               See More
             </a>
         </div>
     </section>
-
     
     <script>
-        // Auto-load 20 images into galleryGrid
+        // Load ONLY 20 images into galleryGrid
         const galleryGrid = document.getElementById('galleryGrid');
-        for (let i = 1; i <= 20; i++) {
+        const totalImagesToShow = 20; // Only 20 images
+        for (let i = 1; i <= totalImagesToShow; i++) {
             const img = document.createElement('img');
             img.src = `images/Artwork/image${i}.jpg`; // Try .jpg first
-            img.alt = `Artwork ${i}`;
+            img.alt = `Artwork Image ${i}`;
+            img.loading = 'lazy'; // Load faster
             img.style.width = '100%';
             img.style.borderRadius = '12px';
             img.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
     
-            // If .jpg fails to load, try .png
+            // Fallback: If .jpg not found, try .png
             img.onerror = function () {
-                img.onerror = null; // Prevent infinite loop if .png also doesn't exist
+                img.onerror = null; // Prevent infinite loop
                 img.src = `images/Artwork/image${i}.png`;
             };
     
             galleryGrid.appendChild(img);
         }
     </script>
+
 
 
 
@@ -116,8 +118,8 @@
     <section id="shop" class="shop-section" style="text-align: center; padding: 50px 20px;">
         <h2 style="font-size: 2em; margin-bottom: 20px;">Order from Our Swiggy Store</h2>
         <a href="https://alka-art-studio.mini.site" target="_blank" 
-           style="display: inline-block; background-color: #FC8019; color: #fff; padding: 14px 30px; font-size: 18px; font-weight: bold; border-radius: 8px; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: background 0.3s;">
-           Visit Our Swiggy Mini Store 🍔
+           style="display: inline-block; background-color: #A71E52; color: #fff; padding: 14px 30px; font-size: 18px; font-weight: bold; border-radius: 8px; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: background 0.3s;">
+           Visit Our Store
         </a>
     </section>
 
@@ -134,7 +136,7 @@
                 <p>At Alka's Art Studio, we believe art is for everyone — whether you're here to learn, explore, or shop for one-of-a-kind handmade treasures.</p>
             </div>
             <div class="about-image">
-                <img src="images/head.jpeg" alt="Head of Alka's Art Studio" class="about-head">
+                <img src="images/head.png" alt="Head of Alka's Art Studio" class="about-head">
             </div>
         </div>
     </section>
