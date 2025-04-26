@@ -40,7 +40,7 @@
     <section id="gallery" class="gallery-section">
         <h2>Gallery</h2>
         <div class="masonry-grid" id="galleryGrid">
-            <!-- 40 images loaded here -->
+            <!-- Only 20 images will be loaded here -->
         </div>
         <div style="text-align: center; margin-top: 30px;">
             <a href="gallery.html" 
@@ -49,28 +49,30 @@
             </a>
         </div>
     </section>
-
     
     <script>
-        // Auto-load 20 images into galleryGrid
+        // Load ONLY 20 images into galleryGrid
         const galleryGrid = document.getElementById('galleryGrid');
-        for (let i = 1; i <= 20; i++) {
+        const totalImagesToShow = 20; // Only 20 images
+        for (let i = 1; i <= totalImagesToShow; i++) {
             const img = document.createElement('img');
             img.src = `images/Artwork/image${i}.jpg`; // Try .jpg first
-            img.alt = `Artwork ${i}`;
+            img.alt = `Artwork Image ${i}`;
+            img.loading = 'lazy'; // Load faster
             img.style.width = '100%';
             img.style.borderRadius = '12px';
             img.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
     
-            // If .jpg fails to load, try .png
+            // Fallback: If .jpg not found, try .png
             img.onerror = function () {
-                img.onerror = null; // Prevent infinite loop if .png also doesn't exist
+                img.onerror = null; // Prevent infinite loop
                 img.src = `images/Artwork/image${i}.png`;
             };
     
             galleryGrid.appendChild(img);
         }
     </script>
+
 
 
 
