@@ -85,33 +85,52 @@
     <!-- Video Section -->
     <section id="video" class="video-section">
       <h2>Featured Videos</h2>
-      <div class="video-container" id="youtube-videos" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
-        <!-- Videos will be injected here -->
+      <div style="display: flex; align-items: center; justify-content: center; gap: 20px; margin-top: 20px;">
+        <button id="prevVideo" style="font-size: 24px; padding: 10px 15px; cursor: pointer;">⬅️</button>
+        <div class="video-container" id="youtube-video" style="width: 300px; height: 200px;">
+          <!-- One video iframe will be injected here -->
+        </div>
+        <button id="nextVideo" style="font-size: 24px; padding: 10px 15px; cursor: pointer;">➡️</button>
       </div>
     </section>
     
     <script>
     const apiKey = 'AIzaSyBTLWNP6GZYfsJB2xiva44Eeu-h-HleXlY';
-    const channelId = 'UCgNjWvgXUjg4UJafnjMSBww'; // Now using the correct channel ID
-    const maxResults = 6; // How many videos you want to show
+    const channelId = 'UCgNjWvgXUjg4UJafnjMSBww';
+    const maxResults = 6;
+    
+    let videos = [];
+    let currentVideoIndex = 0;
     
     fetch(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=${maxResults}`)
       .then(response => response.json())
       .then(data => {
-        const videos = data.items;
-        let output = '';
-        videos.forEach(video => {
-          if (video.id.kind === "youtube#video") { // Only embed actual videos
-            const videoId = video.id.videoId;
-            output += `
-              <iframe width="300" height="200" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen style="border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.2);"></iframe>
-            `;
-          }
-        });
-        document.getElementById('youtube-videos').innerHTML = output;
+        videos = data.items.filter(video => video.id.kind === "youtube#video");
+        showVideo(currentVideoIndex);
       })
       .catch(err => console.log('YouTube API error', err));
+    
+    function showVideo(index) {
+      const videoId = videos[index].id.videoId;
+      const iframe = `
+        <iframe width="300" height="200" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen style="border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.2);"></iframe>
+      `;
+      document.getElementById('youtube-video').innerHTML = iframe;
+    }
+    
+    // Left button
+    document.getElementById('prevVideo').addEventListener('click', () => {
+      currentVideoIndex = (currentVideoIndex - 1 + videos.length) % videos.length;
+      showVideo(currentVideoIndex);
+    });
+    
+    // Right button
+    document.getElementById('nextVideo').addEventListener('click', () => {
+      currentVideoIndex = (currentVideoIndex + 1) % videos.length;
+      showVideo(currentVideoIndex);
+    });
     </script>
+
 
 
     <!-- Shop Section -->
