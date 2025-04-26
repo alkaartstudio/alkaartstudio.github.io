@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Alka's Art Studio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Header Section -->
+<header>
+    <button id="dark-mode-toggle">🌙</button>
+    <div class="logo-section">
+        <a href="index.html"><img src="images/Logo.png" alt="Alka Art Studio Logo"></a>
+        <h1>Alka Art Studio</h1>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="index.html#workshops">Workshops & Events</a></li>
+            <li><a href="index.html#shop">Shop</a></li>
+            <li><a href="index.html#contact">Contact Us</a></li>
+            <li><a href="index.html#about">About Us</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Full Gallery -->
+<section class="gallery-section">
+    <h2>Full Gallery</h2>
+    <div class="masonry-grid" id="fullGalleryGrid">
+        <!-- All images will be injected here -->
+    </div>
+</section>
+
+<script>
+// Load all available images (example: 100 images)
+const fullGalleryGrid = document.getElementById('fullGalleryGrid');
+for (let i = 1; i <= 100; i++) { // You can increase number based on how many images you have
+    const img = document.createElement('img');
+    img.src = `images/gallery/image${i}.jpg`;
+    img.alt = `Artwork ${i}`;
+    img.style.width = '100%';
+    img.style.borderRadius = '12px';
+    img.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+    fullGalleryGrid.appendChild(img);
+}
+</script>
+
+<!-- Footer Section -->
+<footer style="text-align: center; padding: 20px; margin-top: 50px;">
+    <p>&copy; 2025 Alka's Art Studio. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
