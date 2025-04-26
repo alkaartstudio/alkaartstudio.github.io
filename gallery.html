@@ -29,7 +29,7 @@
 
 <!-- Full Gallery -->
 <section class="gallery-section">
-    <h2>Full Gallery</h2>
+    <h2>Art Gallery</h2>
     <div class="masonry-grid" id="fullGalleryGrid">
         <!-- All images will be injected here -->
     </div>
@@ -38,13 +38,23 @@
 <script>
 // Load all available images (example: 29 images)
 const fullGalleryGrid = document.getElementById('fullGalleryGrid');
-for (let i = 1; i <= 29; i++) { // You can increase number based on how many images you have
+const totalImages = 29; // Adjust based on how many images you have
+
+for (let i = 1; i <= totalImages; i++) {
     const img = document.createElement('img');
-    img.src = `images/Artwork/image${i}.jpg`;
+    img.src = `images/Artwork/image${i}.jpg`; // Try .jpg first
     img.alt = `Artwork ${i}`;
+    img.loading = 'lazy'; // Better performance
     img.style.width = '100%';
     img.style.borderRadius = '12px';
     img.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+
+    // If .jpg fails, try .png
+    img.onerror = function () {
+        img.onerror = null; // Prevent infinite loop
+        img.src = `images/Artwork/image${i}.png`;
+    };
+
     fullGalleryGrid.appendChild(img);
 }
 </script>
