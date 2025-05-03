@@ -1,36 +1,40 @@
+
 document.addEventListener("DOMContentLoaded", function () {
     let galleryGrid = document.getElementById("galleryGrid");
 
-    fetch("artworks.json")
-        .then(response => response.json())
-        .then(data => {
-            data.forEach(artwork => {
-                let imgElement = document.createElement("img");
-                imgElement.src = `images/Artwork/${artwork.file}`;
-                imgElement.alt = artwork.title || "Artwork";
-                imgElement.classList.add("gallery-image");
-                galleryGrid.appendChild(imgElement);
+    if (galleryGrid) {
+        const isFullGallery = document.body.classList.contains("full-gallery");
+        const imagesToShow = isFullGallery ? null : 12;
+
+        fetch("artworks.json")
+            .then(response => response.json())
+            .then(data => {
+                const items = isFullGallery ? data : data.slice(-imagesToShow).reverse();
+                items.forEach(artwork => {
+                    let imgElement = document.createElement("img");
+                    imgElement.src = `images/Artwork/${artwork.file}`;
+                    imgElement.alt = artwork.title || "Artwork";
+                    imgElement.classList.add("gallery-image");
+                    galleryGrid.appendChild(imgElement);
+                });
+            })
+            .catch(error => console.error("Error loading images:", error));
+    }
+
+    document.getElementById("dark-mode-toggle")?.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute("href")).scrollIntoView({
+                behavior: "smooth"
             });
-        })
-        .catch(error => console.error("Error loading images:", error));
-});
-
-// Dark Mode Toggle
-document.getElementById("dark-mode-toggle").addEventListener("click", function() {
-    document.body.classList.toggle("dark-mode");
-});
-
-// Smooth Scroll for Navigation Links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener("click", function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute("href")).scrollIntoView({
-            behavior: "smooth"
         });
     });
-});
 
-// Mobile Menu Toggle
-document.getElementById("menu-toggle").addEventListener("click", function() {
-    document.querySelector("nav ul").classList.toggle("active");
+    document.getElementById("menu-toggle")?.addEventListener("click", () => {
+        document.querySelector("nav ul").classList.toggle("active");
+    });
 });
