@@ -298,10 +298,3 @@ footer {
 #gallery-section .see-more-btn:hover {
     background-color: #e17a00;
 }
-
-/* Blog styles */
-.blog-section { padding: 2em; max-width: 800px; margin: auto; }
-.blog-post { margin-bottom: 2em; background: #f9f9f9; padding: 1em; border-radius: 8px; }
-.blog-post h3 { margin-top: 0; }
-.blog-post a { color: #007BFF; text-decoration: none; }
-.blog-post a:hover { text-decoration: underline; }
