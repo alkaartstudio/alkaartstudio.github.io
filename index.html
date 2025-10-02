@@ -11,7 +11,6 @@
 <body>
     <!-- Header Section -->
     <header>
-        
         <button id="menu-toggle">☰</button>
         <div class="logo-section">
             <img src="images/Logo.png" alt="Alka Art Studio Logo">
@@ -22,7 +21,6 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
                 <li><a href="#workshops">Workshops & Events</a></li>
-                
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="#about">About Us</a></li>
             </ul>
@@ -40,24 +38,17 @@
     <!-- Gallery Section -->
     <section id="gallery" class="gallery-section">
         <h2>Gallery</h2>
-        <div class="masonry-grid" id="galleryGrid">
-            <!-- Only 20 images will be loaded here -->
-        </div>
+        <div class="masonry-grid" id="galleryGrid"></div>
         <div style="text-align: center; margin-top: 30px;">
-            <a href="gallery.html" 
-               style="display: inline-block; background-color: #A71E52; color: #fff; padding: 12px 24px; font-size: 16px; font-weight: bold; border-radius: 8px; text-decoration: none; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
-               See More
-            </a>
+            <a href="gallery.html" class="button">See More</a>
         </div>
     </section>
     
     <script>
-        const totalImages = 29; // Same as gallery.html
+        const totalImages = 29;
         const galleryGrid = document.getElementById('galleryGrid');
-        const imagesToShow = 12; // Show latest 12 images
-    
+        const imagesToShow = 12;
         const startImage = totalImages - imagesToShow + 1;
-    
         for (let i = totalImages; i >= startImage; i--) {
             const img = document.createElement('img');
             img.src = `images/Artwork/image${i}.jpg`;
@@ -66,172 +57,61 @@
             img.style.width = '100%';
             img.style.borderRadius = '12px';
             img.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
-    
             img.onerror = function () {
                 img.onerror = null;
                 img.src = `images/Artwork/image${i}.png`;
             };
-    
             galleryGrid.appendChild(img);
         }
     </script>
 
-    
-<!-- Summer Camp Workshop Section -->
-<section id="workshops" class="workshops-section" style="padding: 60px 10%; background-color: #fef8f4;">
-  <h2 style="text-align: center; font-size: 2.2em; margin-bottom: 30px; color: #A71E52;">Summer Camp 2025</h2>
-  <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 40px;">
-    
-    <!-- Workshop Image -->
-    <div style="flex: 1; min-width: 300px; max-width: 400px;">
-      <img src="images/summercamp2025.jpg" alt="Summer Camp Poster" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-    </div>
-    
-    <!-- Workshop Details -->
-    <div style="flex: 1; min-width: 280px; max-width: 500px;">
-      <ul style="font-size: 1.1em; line-height: 1.8; list-style: none; padding-left: 0;">
-        <li style= "font-weight: bold;">Learn all the art forms this summer: </li> 
-        <li>Canvas Painting</li>
-        <li>Glass Painting</li>
-        <li>Coffee Painting</li>
-        <li>Fridge Magnet</li>
-        <li>Bottle Craft</li>
-        <li>Card Making</li>
-        <li>Dot Art</li>
-        <li>Name Plate</li>
-        <li>Bookmark</li>
-      </ul>
-      <div style="margin-top: 20px;">
-        <p style="font-size: 1.1em;">
-          <strong>
-             <a href="https://api.whatsapp.com/send/?phone=919034253673&text=I%27m+interested+in+your+summer+camp.&type=phone_number&app_absent=0&fbclid=PAQ0xDSwKpOTRleHRuA2FlbQIxMAABp7tKfaaTnS8OG8RR0Bja1J8na0ToB_bWi8jIamwICO0YvlP7VVzfVB8HPS7v_aem_PDwAvEpyfPqBe4bC_kdWOQ " target="_blank" style="color: #A71E52;">Whatsapp "Interested" for more details.</a>
-          </strong>
-        </p>
-        <p style="font-size: 1.1em;">
-          <strong>
-             <a href="https://www.instagram.com/alka_art_journal" target="_blank" style="color: #A71E52;">Instagram @alka_art_journal</a>
-          </strong>
-        </p>
+    <!-- Workshops Section -->
+    <section id="workshops" class="workshops-section" style="padding: 60px 10%; background-color: var(--background-light);">
+      <h2 style="text-align: center;">Summer Camp 2025</h2>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 40px;">
+        <div style="flex: 1; min-width: 300px; max-width: 400px;">
+          <img src="images/summercamp2025.jpg" alt="Summer Camp Poster" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+        </div>
+        <div style="flex: 1; min-width: 280px; max-width: 500px;">
+          <ul style="font-size: 1.1em; line-height: 1.8; list-style: none; padding-left: 0;">
+            <li style="font-weight: bold;">Learn all the art forms this summer: </li>
+            <li>Canvas Painting</li>
+            <li>Glass Painting</li>
+            <li>Coffee Painting</li>
+            <li>Fridge Magnet</li>
+            <li>Bottle Craft</li>
+            <li>Card Making</li>
+            <li>Dot Art</li>
+            <li>Name Plate</li>
+            <li>Bookmark</li>
+          </ul>
+          <div style="margin-top: 20px;">
+            <p><strong><a href="https://api.whatsapp.com/send/?phone=919034253673&text=I'm+interested+in+your+summer+camp." target="_blank" style="color: var(--primary-color);">Whatsapp "Interested" for more details.</a></strong></p>
+            <p><strong><a href="https://www.instagram.com/alka_art_journal" target="_blank" style="color: var(--primary-color);">Instagram @alka_art_journal</a></strong></p>
+          </div>
+        </div>
       </div>
-    </div>
-
-  </div>
-</section>
-
-
-
+    </section>
 
     <!-- Video Section -->
     <section id="video" class="video-section">
       <h2>Featured Videos</h2>
       <div style="display: flex; align-items: center; justify-content: center; gap: 20px; margin-top: 20px;">
-        <!-- Left Navigation Button -->
-        <button id="prevVideo" class="video-nav-button">
-          <span class="icon">&#8592;</span> <!-- Left arrow icon -->
-        </button>
-        
-        <!-- Video Container -->
-        <div class="video-container" id="youtube-video" style="flex: 1; max-width: 80%; height: 450px;">
-          <!-- One video iframe will be injected here -->
-        </div>
-    
-        <!-- Right Navigation Button -->
-        <button id="nextVideo" class="video-nav-button">
-          <span class="icon">&#8594;</span> <!-- Right arrow icon -->
-        </button>
+        <button id="prevVideo" class="video-nav-button">&#8592;</button>
+        <div class="video-container" id="youtube-video" style="flex: 1; max-width: 80%; height: 450px;"></div>
+        <button id="nextVideo" class="video-nav-button">&#8594;</button>
       </div>
     </section>
-    
-    <script>
-    const apiKey = 'AIzaSyBTLWNP6GZYfsJB2xiva44Eeu-h-HleXlY';
-    const channelId = 'UCgNjWvgXUjg4UJafnjMSBww';
-    const maxResults = 6;
-    
-    let videos = [];
-    let currentVideoIndex = 0;
-    
-    fetch(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=${maxResults}`)
-      .then(response => response.json())
-      .then(data => {
-        videos = data.items.filter(video => video.id.kind === "youtube#video");
-        showVideo(currentVideoIndex);
-      })
-      .catch(err => console.log('YouTube API error', err));
-    
-    function showVideo(index) {
-      const videoId = videos[index].id.videoId;
-      const iframe = `
-        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen style="border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.2);"></iframe>
-      `;
-      document.getElementById('youtube-video').innerHTML = iframe;
-    }
-    
-    // Left button
-    document.getElementById('prevVideo').addEventListener('click', () => {
-      currentVideoIndex = (currentVideoIndex - 1 + videos.length) % videos.length;
-      showVideo(currentVideoIndex);
-    });
-    
-    // Right button
-    document.getElementById('nextVideo').addEventListener('click', () => {
-      currentVideoIndex = (currentVideoIndex + 1) % videos.length;
-      showVideo(currentVideoIndex);
-    });
-    </script>
-    
-    <!-- Add styles to enhance button look -->
-    <style>
-    .video-nav-button {
-      background-color: #FC8019;
-      color: white;
-      font-size: 24px;
-      border: none;
-      border-radius: 50%;
-      padding: 15px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-    }
-    
-    .video-nav-button:hover {
-      background-color: #F08C24;
-      transform: scale(1.1); /* Slight zoom effect on hover */
-    }
-    
-    .video-nav-button:focus {
-      outline: none; /* Remove focus outline */
-    }
-    
-    .icon {
-      font-size: 30px;
-      margin: 0;
-    }
-    
-    .video-container iframe {
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    }
-    </style>
-
-
-
-    <!-- Shop Section -->
-    
-
-
-
 
     <!-- About Us Section -->
     <section id="about" class="about-section">
       <h2 class="text-center">About Us</h2>
       <div class="about-content">
         <div class="about-text">
-          <p><strong>Welcome to Alka Art Studio</strong> – a vibrant space where creativity meets craftsmanship. We are passionate about celebrating handmade art and providing a platform for artistic expression and inspiration.</p>
-          <br>
-          <p><strong>Our Founder:</strong> Alka, a seasoned artist with over 25 years of experience, brings a rich blend of tradition, skill, and innovation to our studio. She is a specialist art teacher with <strong>Pidilite Industries</strong> and a guest lecturer at a government college, known for her expertise across diverse art forms. From intricate handicrafts to captivating paintings, she not only teaches but also shares her creations with the world.</p>
-          <br>
-          <p><strong>Our Mission:</strong> At Alka Art Studio, we believe that art is for everyone — whether you're here to learn, explore, or shop for one-of-a-kind handmade treasures.</p>
+          <p><strong>Welcome to Alka Art Studio</strong> – a vibrant space where creativity meets craftsmanship...</p>
+          <p><strong>Our Founder:</strong> Alka, a seasoned artist with over 25 years of experience...</p>
+          <p><strong>Our Mission:</strong> At Alka Art Studio, we believe that art is for everyone...</p>
         </div>
-        
         <div class="about-image">
           <img src="images/head.png" alt="Head of Alka Art Studio" class="about-head">
         </div>
@@ -241,9 +121,8 @@
     <!-- Contact Section -->
     <section id="contact" class="contact-section">
         <div class="connect-section" style="margin-top:25px; text-align:center;">
-            <h3 style="color:#A71E52; margin-bottom:8px;">Connect With Us</h3>
+            <h3 style="color: var(--primary-color); margin-bottom:8px;">Connect With Us</h3>
             <p style="font-style:italic; margin-bottom:15px;">Follow our artistic journey</p>
-            
             <div class="social-icons" style="display:flex; justify-content:center; gap:15px; margin-top:10px;">
                 <a href="https://www.youtube.com/@AlkaArtStudio" target="_blank"><img src="images/youtube.png" alt="YouTube" style="width:32px; height:32px;"></a>
                 <a href="https://in.pinterest.com/alkaartstudio/" target="_blank"><img src="images/pinterest.png" alt="Pinterest" style="width:32px; height:32px;"></a>
@@ -253,41 +132,45 @@
         </div>
     </section>
 
-<footer style="background-color: #794326; color: #fef8f4; padding: 40px 10%;">
-        <div class="footer-content-custom" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px;">
-            
-            <div class="footer-column" style="max-width: 300px;">
-                <h3 style="color: #fef8f4; font-size: 1.4em; margin-bottom: 15px;">Alka Art Studio</h3>
-                <p style="font-size: 1em; line-height: 1.6;">Creating unique handpainted artworks and wearable art that tells a story. Every piece is crafted with love and attention to detail.</p>
-            </div>
+    <!-- Footer -->
+    <footer>
+      <div class="footer-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;">
 
-            <div class="footer-column">
-                <h3 style="color: #fef8f4; font-size: 1.4em; margin-bottom: 15px;">Collections</h3>
-                <ul style="list-style: none; padding: 0; margin: 0; font-size: 1em; line-height: 2;">
-                    <li><a href="gallery.html" style="color: #fef8f4; text-decoration: none;">Original Paintings</a></li>
-                    <li><a href="#" style="color: #fef8f4; text-decoration: none;">Handpainted Garments</a></li>
-                    <li><a href="#contact" style="color: #fef8f4; text-decoration: none;">Custom Commissions</a></li>
-                    <li><a href="#workshops" style="color: #fef8f4; text-decoration: none;">Art Workshops</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-column">
-                <h3 style="color: #fef8f4; font-size: 1.4em; margin-bottom: 15px;">Connect With Us</h3>
-                <p style="margin-bottom: 10px; font-size: 1em;">Follow our artistic journey</p>
-                <div class="social-links-text" style="display: flex; gap: 20px;">
-                    <a href="https://www.instagram.com/alka_art_journal/" target="_blank" style="color: #fef8f4; text-decoration: none;">Instagram</a>
-                    <a href="https://www.facebook.com/AlkaArtJournal/" target="_blank" style="color: #fef8f4; text-decoration: none;">Facebook</a>
-                    <a href="https://in.pinterest.com/alka_art_journal/" target="_blank" style="color: #fef8f4; text-decoration: none;">Pinterest</a>
-                </div>
-            </div>
-
+        <!-- Column 1 -->
+        <div>
+          <h3>Alka Art Studio</h3>
+          <p>Creating unique handpainted artworks and wearable art that tells a story. Every piece is crafted with love and attention to detail.</p>
         </div>
-        
-        <div style="text-align: center; margin-top: 50px; border-top: 1px solid rgba(255, 255, 255, 0.2); padding-top: 20px;">
-            <p style="font-size: 0.9em; margin: 5px 0;">Contact: info.alkaartstudio@gmail.com</p>
-            <p style="font-size: 0.9em; margin: 5px 0;">&copy; 2025 Alka Art Studio. All rights reserved.</p>
+
+        <!-- Column 2 -->
+        <div>
+          <h3>Collections</h3>
+          <ul style="list-style: none; padding: 0; margin: 0;">
+            <li><a href="gallery.html">Original Paintings</a></li>
+            <li><a href="#">Handpainted Garments</a></li>
+            <li><a href="#contact">Custom Commissions</a></li>
+            <li><a href="#workshops">Art Workshops</a></li>
+          </ul>
         </div>
+
+        <!-- Column 3 -->
+        <div>
+          <h3>Connect With Us</h3>
+          <p>Follow our artistic journey</p>
+          <ul style="list-style: none; padding: 0; margin: 0;">
+            <li><a href="https://www.youtube.com/@AlkaArtStudio" target="_blank">YouTube</a></li>
+            <li><a href="https://www.instagram.com/alka.art.studio/" target="_blank">Instagram</a></li>
+            <li><a href="https://www.facebook.com/AlkaArtJournal/" target="_blank">Facebook</a></li>
+            <li><a href="https://in.pinterest.com/alkaartstudio/" target="_blank">Pinterest</a></li>
+          </ul>
+        </div>
+
+      </div>
+      <div style="grid-column: span 3; text-align: center; margin-top: 40px; border-top: 1px solid var(--subtle-color); padding-top: 20px;">
+        <p>&copy; 2025 Alka Art Studio. All rights reserved.</p>
+      </div>
     </footer>
+
     <script src="scripts.js"></script>
 </body>
 </html>
