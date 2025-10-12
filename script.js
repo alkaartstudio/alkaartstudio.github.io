@@ -24,19 +24,22 @@ async function fetchData(path) {
         // --- 🎯 DEBUG A: Check raw text length (Should be > 0) ---
         console.log(`[DEBUG A] Fetched CSV content length for ${path}: ${csvText.length} characters.`);
 
-        // Simple CSV to JSON converter (assuming basic structure without complex quotes/newlines)
-        // ... (existing parsing code)
-        const lines = csvText.split('\r\n').filter(line => line.trim() !== '');
-        const headers = lines[0].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(h => h.trim().replace(/^"|"$/g, '').replace(/""/g, '"'));
+        // *** CRITICAL FIX: Use Regex to split lines by any combination of \r or \n ***
+        // This resolves the issue where the server uses different line endings than Windows.
+        const lines = csvText.split(/[\r\n]+/).filter(line => line.trim() !== '');
         
-        // --- 🎯 DEBUG B: Check parsing results (Should show data rows found) ---
+        // --- 🎯 DEBUG B: Check parsing results ---
         if (lines.length <= 1) {
             console.error(`[DEBUG B] ❌ FATAL PARSING ERROR for ${path}: Only found header or zero lines.`);
         } else {
             console.log(`[DEBUG B] ✅ SUCCESS: ${path} parsed. Data rows found: ${lines.length - 1}.`);
         }
+
+        // Handle headers which might contain commas inside quoted strings (using existing regex)
+        const headers = lines[0].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(h => h.trim().replace(/^"|"$/g, '').replace(/""/g, '"'));
         
         const data = lines.slice(1).map(line => {
+            // NOTE: The regex /,(?=(?:(?:[^"]*"){2})*[^"]*$)/ handles commas inside double-quoted strings.
             const values = line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(v => v.trim().replace(/^"|"$/g, '').replace(/""/g, '"'));
             const row = {};
             headers.forEach((header, i) => {
@@ -88,22 +91,21 @@ function setAllStatusLabelsVisibility() {
 
 /**
  * Generates the HTML string for a single gallery product card.
- *
- * MODIFIED: Splits filters by semicolon (;) for multi-category support.
  */
 function createGalleryItemHTML(item) {
-    // ... (existing status logic)
     const statusText = item.status || 'Available';
     const statusClass = (statusText.toLowerCase() === 'sold' || statusText.toLowerCase() === 'archived') ? 'sold' : 'available';
+    // Use .status-badge for full gallery styles
     const statusLabel = `<span class="status-badge ${statusClass}">${statusText}</span>`;
 
-    // ... (existing filter logic)
+    // --- LOGIC FOR MULTIPLE FILTERS (USES SEMICOLON) ---
     const filters = item.filter ?
         item.filter.split(';').map(f => f.trim().toLowerCase()).filter(f => f.length > 0).join(' ') :
         'all';
-    
-    // --- 🎯 DEBUG C: Check generated image path and CSV data ---
+    // ------------------------------------
+
     const imagePath = `images/${item.image_src}`;
+    // --- 🎯 DEBUG C: Check generated image path and CSV data ---
     console.log(`[DEBUG C] HTML created for ID ${item.id}. Image Source path: ${imagePath}`);
 
     const html = `
@@ -115,7 +117,7 @@ function createGalleryItemHTML(item) {
             <div class="card-info product-info">
                 <h4 class="product-title">${item.title}</h4>
                 <p class="product-medium">Medium: ${item.medium}</p>
-            </div>
+                </div>
         </div>
     `;
     return html;
@@ -126,13 +128,12 @@ function createGalleryItemHTML(item) {
  */
 async function setupGalleryPage() {
     const rawData = await fetchData(GALLERY_CSV_PATH);
-    
+
     // --- 🎯 DEBUG D: Check data received by calling function ---
     console.log(`[DEBUG D] setupGalleryPage: Received ${rawData.length} total artwork items.`);
 
     // Filter out archived items
     const allArtworks = rawData.filter(item => item.status && item.status.toLowerCase() !== 'archived');
-
     const galleryGrid = document.getElementById('gallery-grid');
     const filterButtons = document.querySelectorAll('.filter-button');
 
@@ -236,6 +237,10 @@ function setupCourseSliders() {
  */
 async function setupCoursesPage() {
     const coursesData = await fetchData(COURSES_CSV_PATH);
+
+    // --- 🎯 DEBUG D: Check data received by calling function ---
+    console.log(`[DEBUG D] setupCoursesPage: Received ${coursesData.length} total course items.`);
+
     const coursesList = document.getElementById('courses-list');
 
     // Filter to show only courses with status 'yes'
@@ -291,11 +296,14 @@ async function setupCoursesPage() {
 
 /**
  * Loads the initial set of data for the home page (featured gallery items and first 3 featured courses).
- * * UPDATED: Course loading now filters for 'is_featured' and shows the first 3.
  */
 async function loadAndFilterHomePage() {
     // 1. Load and filter Gallery Items
     const rawData = await fetchData(GALLERY_CSV_PATH);
+
+    // --- 🎯 DEBUG D: Check data received by calling function (Gallery) ---
+    console.log(`[DEBUG D] loadAndFilterHomePage (Gallery): Received ${rawData.length} total artwork items.`);
+
     const allArtworks = rawData.filter(item => item.status && item.status.toLowerCase() !== 'archived');
     const featuredArtworks = allArtworks.filter(item => item.is_featured && item.is_featured.toLowerCase() === 'yes').slice(0, 3);
     const galleryGrid = document.getElementById('home-gallery-grid');
@@ -309,6 +317,10 @@ async function loadAndFilterHomePage() {
 
     // 2. Load and filter Courses (UPDATED LOGIC HERE)
     const coursesData = await fetchData(COURSES_CSV_PATH);
+    
+    // --- 🎯 DEBUG D: Check data received by calling function (Courses) ---
+    console.log(`[DEBUG D] loadAndFilterHomePage (Courses): Received ${coursesData.length} total course items.`);
+
 
     // Filter to show only published courses (status: 'yes') AND featured courses (is_featured: 'yes').
     // Then take the first 3.
