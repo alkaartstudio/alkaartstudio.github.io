@@ -20,11 +20,23 @@ async function fetchData(path) {
     try {
         const response = await fetch(path);
         const csvText = await response.text();
+        
+        // --- 🎯 DEBUG A: Check raw text length (Should be > 0) ---
+        console.log(`[DEBUG A] Fetched CSV content length for ${path}: ${csvText.length} characters.`);
+
         // Simple CSV to JSON converter (assuming basic structure without complex quotes/newlines)
+        // ... (existing parsing code)
         const lines = csvText.split('\r\n').filter(line => line.trim() !== '');
-        const headers = lines[0].split(',').map(h => h.trim());
+        const headers = lines[0].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(h => h.trim().replace(/^"|"$/g, '').replace(/""/g, '"'));
+        
+        // --- 🎯 DEBUG B: Check parsing results (Should show data rows found) ---
+        if (lines.length <= 1) {
+            console.error(`[DEBUG B] ❌ FATAL PARSING ERROR for ${path}: Only found header or zero lines.`);
+        } else {
+            console.log(`[DEBUG B] ✅ SUCCESS: ${path} parsed. Data rows found: ${lines.length - 1}.`);
+        }
+        
         const data = lines.slice(1).map(line => {
-            // NOTE: The regex /,(?=(?:(?:[^"]*"){2})*[^"]*$)/ handles commas inside double-quoted strings.
             const values = line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(v => v.trim().replace(/^"|"$/g, '').replace(/""/g, '"'));
             const row = {};
             headers.forEach((header, i) => {
@@ -80,30 +92,30 @@ function setAllStatusLabelsVisibility() {
  * MODIFIED: Splits filters by semicolon (;) for multi-category support.
  */
 function createGalleryItemHTML(item) {
+    // ... (existing status logic)
     const statusText = item.status || 'Available';
     const statusClass = (statusText.toLowerCase() === 'sold' || statusText.toLowerCase() === 'archived') ? 'sold' : 'available';
-    // Use .status-badge for full gallery styles
     const statusLabel = `<span class="status-badge ${statusClass}">${statusText}</span>`;
 
-    // --- LOGIC FOR MULTIPLE FILTERS (USES SEMICOLON) ---
-    // 1. Splits the CSV filter string (e.g., "painting; traditional") by semicolon.
-    // 2. Trims and converts each to lowercase.
-    // 3. Joins them with a space (e.g., "painting traditional") for filtering.
+    // ... (existing filter logic)
     const filters = item.filter ?
         item.filter.split(';').map(f => f.trim().toLowerCase()).filter(f => f.length > 0).join(' ') :
         'all';
-    // ------------------------------------
+    
+    // --- 🎯 DEBUG C: Check generated image path and CSV data ---
+    const imagePath = `images/${item.image_src}`;
+    console.log(`[DEBUG C] HTML created for ID ${item.id}. Image Source path: ${imagePath}`);
 
     const html = `
         <div class="gallery-card product-card" data-filter="${filters}" data-id="${item.id}">
             <div class="card-image-wrapper">
-                <img src="images/${item.image_src}" alt="${item.title}">
+                <img src="${imagePath}" alt="${item.title}">
                 ${SHOW_GALLERY_STATUS_TO_ALL ? statusLabel : ''}
             </div>
             <div class="card-info product-info">
                 <h4 class="product-title">${item.title}</h4>
                 <p class="product-medium">Medium: ${item.medium}</p>
-                </div>
+            </div>
         </div>
     `;
     return html;
@@ -114,8 +126,13 @@ function createGalleryItemHTML(item) {
  */
 async function setupGalleryPage() {
     const rawData = await fetchData(GALLERY_CSV_PATH);
+    
+    // --- 🎯 DEBUG D: Check data received by calling function ---
+    console.log(`[DEBUG D] setupGalleryPage: Received ${rawData.length} total artwork items.`);
+
     // Filter out archived items
     const allArtworks = rawData.filter(item => item.status && item.status.toLowerCase() !== 'archived');
+
     const galleryGrid = document.getElementById('gallery-grid');
     const filterButtons = document.querySelectorAll('.filter-button');
 
