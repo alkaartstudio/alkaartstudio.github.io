@@ -21,25 +21,20 @@ async function fetchData(path) {
         const response = await fetch(path);
         const csvText = await response.text();
         
-        // --- 🎯 DEBUG A: Check raw text length (Should be > 0) ---
-        console.log(`[DEBUG A] Fetched CSV content length for ${path}: ${csvText.length} characters.`);
-
-        // *** CRITICAL FIX: Use Regex to split lines by any combination of \r or \n ***
-        // This resolves the issue where the server uses different line endings than Windows.
+        // CRITICAL FIX: Use Regex to split lines by any combination of \r or \n
+        // This handles cross-platform line ending differences.
         const lines = csvText.split(/[\r\n]+/).filter(line => line.trim() !== '');
         
-        // --- 🎯 DEBUG B: Check parsing results ---
+        // If the file is empty or only contains a header, return an empty array
         if (lines.length <= 1) {
-            console.error(`[DEBUG B] ❌ FATAL PARSING ERROR for ${path}: Only found header or zero lines.`);
-        } else {
-            console.log(`[DEBUG B] ✅ SUCCESS: ${path} parsed. Data rows found: ${lines.length - 1}.`);
+             return [];
         }
 
-        // Handle headers which might contain commas inside quoted strings (using existing regex)
+        // Handle headers which might contain commas inside quoted strings
         const headers = lines[0].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(h => h.trim().replace(/^"|"$/g, '').replace(/""/g, '"'));
         
         const data = lines.slice(1).map(line => {
-            // NOTE: The regex /,(?=(?:(?:[^"]*"){2})*[^"]*$)/ handles commas inside double-quoted strings.
+            // The regex /,(?=(?:(?:[^"]*"){2})*[^"]*$)/ handles commas inside double-quoted strings.
             const values = line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(v => v.trim().replace(/^"|"$/g, '').replace(/""/g, '"'));
             const row = {};
             headers.forEach((header, i) => {
@@ -105,8 +100,6 @@ function createGalleryItemHTML(item) {
     // ------------------------------------
 
     const imagePath = `images/${item.image_src}`;
-    // --- 🎯 DEBUG C: Check generated image path and CSV data ---
-    console.log(`[DEBUG C] HTML created for ID ${item.id}. Image Source path: ${imagePath}`);
 
     const html = `
         <div class="gallery-card product-card" data-filter="${filters}" data-id="${item.id}">
@@ -128,9 +121,6 @@ function createGalleryItemHTML(item) {
  */
 async function setupGalleryPage() {
     const rawData = await fetchData(GALLERY_CSV_PATH);
-
-    // --- 🎯 DEBUG D: Check data received by calling function ---
-    console.log(`[DEBUG D] setupGalleryPage: Received ${rawData.length} total artwork items.`);
 
     // Filter out archived items
     const allArtworks = rawData.filter(item => item.status && item.status.toLowerCase() !== 'archived');
@@ -157,14 +147,12 @@ async function setupGalleryPage() {
             productCards.forEach(card => {
                 const itemFiltersString = card.getAttribute('data-filter');
 
-                // --- LOGIC FOR MULTIPLE FILTERS ---
                 // Checks if the item's space-separated data-filter string includes the filterValue
                 if (filterValue === 'all' || itemFiltersString.includes(filterValue)) {
                     card.style.display = 'inline-block'; // Necessary for Masonry to work on show
                 } else {
                     card.style.display = 'none';
                 }
-                // ------------------------------------
             });
         });
     });
@@ -238,9 +226,6 @@ function setupCourseSliders() {
 async function setupCoursesPage() {
     const coursesData = await fetchData(COURSES_CSV_PATH);
 
-    // --- 🎯 DEBUG D: Check data received by calling function ---
-    console.log(`[DEBUG D] setupCoursesPage: Received ${coursesData.length} total course items.`);
-
     const coursesList = document.getElementById('courses-list');
 
     // Filter to show only courses with status 'yes'
@@ -301,9 +286,6 @@ async function loadAndFilterHomePage() {
     // 1. Load and filter Gallery Items
     const rawData = await fetchData(GALLERY_CSV_PATH);
 
-    // --- 🎯 DEBUG D: Check data received by calling function (Gallery) ---
-    console.log(`[DEBUG D] loadAndFilterHomePage (Gallery): Received ${rawData.length} total artwork items.`);
-
     const allArtworks = rawData.filter(item => item.status && item.status.toLowerCase() !== 'archived');
     const featuredArtworks = allArtworks.filter(item => item.is_featured && item.is_featured.toLowerCase() === 'yes').slice(0, 3);
     const galleryGrid = document.getElementById('home-gallery-grid');
@@ -315,12 +297,8 @@ async function loadAndFilterHomePage() {
         setAllStatusLabelsVisibility();
     }
 
-    // 2. Load and filter Courses (UPDATED LOGIC HERE)
+    // 2. Load and filter Courses
     const coursesData = await fetchData(COURSES_CSV_PATH);
-    
-    // --- 🎯 DEBUG D: Check data received by calling function (Courses) ---
-    console.log(`[DEBUG D] loadAndFilterHomePage (Courses): Received ${coursesData.length} total course items.`);
-
 
     // Filter to show only published courses (status: 'yes') AND featured courses (is_featured: 'yes').
     // Then take the first 3.
