@@ -1,0 +1,776 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- Global Styles & Variables --- */
+:root {
+    --primary-color: #A34839;
+    --accent-color: #F8C300;
+    --background-light: #FFFAE9;
+    --background-dark: #5F3E33;
+    --subtle-color: #B78D7D;
+    --text-dark: #333333;
+    --text-light: #fff;
+    --card-bg: #fff;
+    --header-height: 80px;
+    --banner-height: 40px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--background-light);
+    padding-top: calc(var(--header-height) + var(--banner-height));
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Georgia', serif;
+    margin-bottom: 0.5em;
+    color: var(--primary-color);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--background-dark);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.light-background {
+    background-color: var(--background-light);
+}
+
+.section-padding {
+    padding: 80px 10%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: var(--subtle-color);
+    margin: 20px 0;
+    opacity: 0.5;
+}
+
+/* --- Utility Classes --- */
+.cta-button {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 1em;
+    font-weight: 600;
+    border: 2px solid;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    margin: 10px 5px;
+}
+
+.primary-button {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border-color: var(--primary-color);
+}
+
+.primary-button:hover {
+    background-color: var(--background-dark);
+    border-color: var(--background-dark);
+    color: var(--text-light);
+}
+
+.secondary-button {
+    background-color: transparent;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.secondary-button:hover {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+}
+
+.whatsapp-button {
+    background-color: #25D366;
+    color: var(--text-light);
+    border-color: #25D366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.whatsapp-button i {
+    margin-right: 8px;
+}
+
+.whatsapp-button:hover {
+    background-color: #128C7E;
+    border-color: #128C7E;
+}
+
+/* --- Header & Navigation --- */
+header {
+    background-color: var(--background-light);
+    border-bottom: 1px solid var(--subtle-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+}
+
+.logo {
+    font-family: 'Georgia', 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.tagline {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 0.8em;
+    color: var(--subtle-color);
+    margin-top: 2px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-dark);
+    margin: 0 15px;
+    font-weight: 500;
+    transition: color 0.3s;
+    position: relative;
+    padding: 5px 0;
+}
+
+nav a:hover, nav a.active {
+    color: var(--primary-color);
+}
+
+nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+
+/* --- Moving Banner --- */
+.moving-banner {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    width: 100%;
+    height: var(--banner-height);
+    background-color: var(--accent-color);
+    color: var(--text-dark);
+    text-align: center;
+    line-height: var(--banner-height);
+    font-weight: 600;
+    z-index: 999;
+    overflow: hidden;
+}
+
+.moving-banner p {
+    white-space: nowrap;
+    animation: marquee 15s linear infinite;
+    display: inline-block;
+    padding-left: 100%;
+}
+
+@keyframes marquee {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+
+/* --- Hero Section (Homepage) --- */
+#hero-section {
+    background: url('images/hero-image.jpg') no-repeat center center/cover;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: var(--text-light);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 40px;
+    border-radius: 8px;
+    max-width: 500px;
+}
+
+#hero-section h1 {
+    font-size: 3em;
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+.highlight-alive {
+    color: var(--accent-color);
+}
+
+
+/* --- Gallery Grid (Featured on Home & Full Gallery) --- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+/* Masonry grid for full gallery page */
+.masonry-grid {
+    column-count: 3; 
+    column-gap: 30px;
+    margin-top: 30px;
+}
+
+.gallery-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e0e0e0;
+    transition: transform 0.2s;
+    /* Required for masonry layout: */
+    display: inline-block; 
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.gallery-card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.card-image-wrapper {
+    position: relative;
+}
+
+.gallery-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.card-info {
+    padding: 10px 15px;
+    /* Center align heading and medium (from previous request) */
+    text-align: center;
+}
+
+.card-info h4 {
+    font-size: 1.1em;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.card-info p {
+    font-size: 0.9em;
+    color: #888;
+    margin-bottom: 0; 
+}
+
+/* Status Badges */
+.status-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.75em;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-light);
+    z-index: 5;
+}
+
+.status-badge.available {
+    background-color: #007bff; /* Blue */
+}
+
+.status-badge.sold {
+    background-color: var(--primary-color); /* Reddish-Brown */
+}
+
+.status-badge.archived {
+    background-color: #6c757d; /* Gray */
+}
+
+
+/* --- Gallery Filters --- */
+#gallery-filters {
+    background-color: var(--background-dark);
+    padding: 20px 10%;
+    text-align: center;
+}
+
+.filters-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.filter-button {
+    background-color: var(--subtle-color);
+    color: var(--text-light);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.filter-button:hover {
+    background-color: var(--primary-color);
+}
+
+.filter-button.active {
+    background-color: var(--accent-color);
+    color: var(--text-dark);
+}
+
+/* --- Newsletter Form (Homepage) --- */
+#newsletter {
+    background-color: var(--background-light);
+    text-align: center;
+}
+
+#newsletter h2 {
+    color: var(--background-dark);
+}
+
+#newsletter p {
+    max-width: 600px;
+    margin: 0 auto 20px;
+}
+
+#newsletter-form-google {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#newsletter-form-google input {
+    padding: 10px 15px;
+    border: 1px solid var(--subtle-color);
+    border-radius: 5px;
+    flex-grow: 1;
+}
+
+#newsletter-form-google button {
+    flex-shrink: 0;
+}
+
+#form-message {
+    margin-top: 15px;
+    font-style: italic;
+}
+
+.hidden {
+    display: none;
+}
+
+/* --- Home Page Courses Grid --- */
+#home-courses-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 30px;
+    margin-top: 30px;
+}
+
+/* --- Course Card & Slider Styles (Applies to both Home and Courses Page) --- */
+
+.course-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column; 
+    /* Ensures the card maintains its box style regardless of the content */
+}
+
+/* Slider Container (The 'window' for the images) */
+.course-image-slider-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    /* Home Page: Fixed aspect ratio for a uniform look */
+    padding-top: 66.66%; /* 3:2 Aspect Ratio (100% / 1.5) */
+    flex-shrink: 0;
+}
+
+/* Slides Wrapper (The element that moves) */
+.course-slides-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Individual Slide */
+.course-slide {
+    min-width: 100%; 
+    height: 100%;
+    position: relative;
+}
+
+/* Image Containment: Ensures the full image is visible within the window */
+.course-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* KEY: This ensures the image fits entirely within the box */
+    display: block;
+}
+
+/* Slider Buttons */
+.slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: var(--text-light);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 1.2em;
+    opacity: 0.8;
+    transition: opacity 0.2s, background-color 0.2s;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-button:hover {
+    opacity: 1;
+    background: var(--primary-color);
+}
+
+.prev-button {
+    left: 10px;
+}
+
+.next-button {
+    right: 10px;
+}
+
+/* Navigation Dots */
+.slider-nav-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 10;
+}
+
+.nav-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    margin: 0 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, width 0.3s, height 0.3s;
+}
+
+.nav-dot.active {
+    background-color: var(--primary-color);
+    width: 10px;
+    height: 10px;
+}
+
+/* Course Info Block */
+.course-info {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.course-info h4 {
+    margin-top: 0;
+}
+
+.course-actions-home {
+    display: flex;
+    gap: 10px;
+    margin-top: auto; /* Pushes action buttons to the bottom */
+}
+
+/* --- Full Courses Page Specific Layout (courses.html) --- */
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.course-card.full-page-card {
+    /* Override flex-direction for horizontal layout */
+    flex-direction: row; 
+    max-width: 100%;
+}
+
+.course-card.full-page-card .course-image-slider-container {
+    /* Override width/aspect ratio to use fixed height for better full-page display */
+    width: 40%; 
+    padding-top: 0; 
+    min-height: 300px;
+}
+
+.course-card.full-page-card .course-info {
+    width: 60%;
+    padding: 20px;
+}
+
+.course-card.full-page-card .whatsapp-button {
+    width: auto; /* Allow button to size naturally */
+    align-self: flex-start;
+}
+
+/* --- About Page --- */
+.about-layout-container {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.about-text {
+    flex: 3;
+}
+
+.about-image {
+    flex: 1;
+    text-align: center;
+}
+
+.about-head {
+    width: 100%;
+    max-width: 200px; 
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    padding-top: 40px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 10%;
+    flex-wrap: wrap;
+}
+
+.footer-container .col {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 30px;
+}
+
+.footer-container h3 {
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+.footer-container p, .footer-container ul, .footer-container a {
+    color: #ccc;
+    font-size: 0.9em;
+}
+
+.footer-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-container ul li {
+    margin-bottom: 5px;
+}
+
+.footer-container a:hover {
+    color: var(--background-light);
+}
+
+.social-links {
+    margin-top: 10px;
+}
+
+.social-links a i {
+    margin-right: 5px;
+    font-size: 1.1em;
+}
+
+.footer-bottom {
+    padding: 15px 10%;
+    font-size: 0.8em;
+    color: #999;
+    border-top: 1px solid var(--subtle-color);
+    margin-top: 20px;
+}
+
+.footer-bottom hr {
+    display: none;
+}
+
+/* --- Media Queries for Responsiveness --- */
+@media (max-width: 992px) {
+    .masonry-grid {
+        column-count: 2;
+    }
+    
+    .course-card.full-page-card {
+        flex-direction: column;
+    }
+
+    .course-card.full-page-card .course-image-slider-container {
+        width: 100%;
+        min-height: auto; 
+        padding-top: 66.66%; /* Revert to aspect ratio on smaller screens */
+    }
+
+    .course-card.full-page-card .course-info {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: calc(var(--header-height) + var(--banner-height));
+    }
+
+    header {
+        flex-direction: column;
+        height: auto;
+        padding: 10px 5%;
+        position: static;
+    }
+    
+    .moving-banner {
+        position: static;
+        top: 0;
+    }
+
+    .logo-container {
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav a {
+        margin: 5px 10px;
+    }
+
+    .section-padding {
+        padding: 40px 5%;
+    }
+    
+    #home-courses-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .masonry-grid {
+        column-count: 1;
+    }
+    
+    .about-layout-container {
+        flex-direction: column-reverse;
+    }
+    
+    .about-image {
+        margin-bottom: 20px;
+    }
+
+    #newsletter-form-google {
+        flex-direction: column;
+        max-width: 400px;
+    }
+
+    #newsletter-form-google input {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .footer-container {
+        flex-direction: column;
+        padding: 0 5%;
+    }
+
+    .footer-container .col {
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    #hero-section h1 {
+        font-size: 2em;
+    }
+    
+    .course-actions-home {
+        flex-direction: column;
+    }
+    
+    .cta-button {
+        width: 100%;
+    }
+}

@@ -1,0 +1,32 @@
+id,image_src,title,status,medium,filter,is_featured
+1,image1.png,Abstract Handpainted,Available,Fabric Paint,fashion,yes
+2,image2.png,Doodle Tote Bag,Sold,Fabric Paint,fashion,no
+3,image3.png,Floral Watch,Sold,Fabric Paint,fashion,no
+4,image4.png,Fridge Magnet,Available,Clay Art with Acrylic Paint,clay,yes
+5,image5.png,Hanging,Sold,Clay Art with Pastel Paint,clay,no
+6,image6.png,Christmas,Available,Clay Art with Acrylic Paint,clay,no
+7,image7.png,Radha Krishna Madhubani,Available,Acrylic on Canvas,traditional,yes
+8,image8.png,Madhubani Mandala,Available,Acrylic on Canvas,traditional,no
+9,image9.png,Madhubani Sarawasti Maa,Available,Acrylic on Canvas,traditional,no
+10,image10.png,Fridge Magnet,Archived,Clay Art,clay,no
+11,image11.png,Van Gogh Beach Style Canvas Painting,Available,Acrylic on Canvas,painting,no
+12,image12.png,Fridge Magnet,Available,Clay Art,clay,no
+13,image13.png,Tote Bag,Available,Fabric Paint,fashion,no
+14,image14.png,Floral Saree,Available,Fabric Paint,fashion,no
+15,image15.png,Miniature Clay Pots,Available,Clay Art,clay; interior,no
+16,image16.jpg,Bridal Canvas Painting,Available,Acrylic on Canvas,painting,no
+17,image17.jpg,Koi Fish Pond,Available,Acrylic on Canvas,painting,no
+18,image18.jpg,Kalamkari Painting,Available,Acrylic Paint,traditional;interior,no
+19,image19.jpg,Painting,Available,Acrylic on MDF,interior,no
+20,image20.jpg,Nandi Canvas Painting,Available,Acrylic on Canvas,painting,no
+21,image21.jpg,African Canvas Painting,Available,Acrylic on Canvas,painting,no
+22,image22.jpg,Tote Bag,Available,Fabric Paint,fashion,no
+23,image23.jpg,Stamp Style Painting,Available,Acrylic on Canvas,painting,no
+24,image24.jpg,Still Life Painting,Available,Mixed media,painting,no
+25,image25.jpg,Tree of Life,Available,Clay on Fabric,interior; clay,no
+26,image26.jpg,Dog Canvas Painting,Available,Acrylic on Canvas,painting,no
+27,image27.jpg,Mughal Style Canvas,Available,Acrylic on Canvas,painting,no
+28,image28.jpg,Radha Krishna Canvas,Available,Acrylic on Canvas,painting,no
+29,image29.jpg,Rural Theme Painting,Available,Acrylic on Canvas,painting,no
+30,image30.jpg,Tropical Duo: Hand-Painted Shirt,Available,Fabric Paint,fashion,no
+31,image31.jpg,Santorini Bottle Art,Available,Clay art on Bottle,clay; interior,no

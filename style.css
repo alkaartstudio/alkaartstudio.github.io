@@ -1,0 +1,935 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- Global Styles & Variables --- */
+:root {
+    --primary-color: #A34839;
+    --accent-color: #F8C300;
+    --background-light: #FFFAE9;
+    --background-dark: #5F3E33;
+    --subtle-color: #B78D7D;
+    --text-dark: #333333;
+    --text-light: #fff;
+    --card-bg: #fff;
+    --header-height: 80px;
+    --banner-height: 40px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--background-light);
+    padding-top: calc(var(--header-height) + var(--banner-height));
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Georgia', serif;
+    margin-bottom: 0.5em;
+    color: var(--primary-color);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--background-dark);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.light-background {
+    background-color: var(--background-light);
+}
+
+.section-padding {
+    padding: 80px 10%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: var(--subtle-color);
+    margin: 20px 0;
+    opacity: 0.5;
+}
+
+/* --- Utility Classes --- */
+.cta-button {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 1em;
+    font-weight: 600;
+    border: 2px solid;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    margin: 10px 5px;
+}
+
+.primary-button {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border-color: var(--primary-color);
+}
+
+.primary-button:hover {
+    background-color: var(--background-dark);
+    border-color: var(--background-dark);
+    color: var(--text-light);
+}
+
+.secondary-button {
+    background-color: transparent;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.secondary-button:hover {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+}
+
+.whatsapp-button {
+    background-color: #25D366;
+    color: var(--text-light);
+    border-color: #25D366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.whatsapp-button i {
+    margin-right: 8px;
+}
+
+.whatsapp-button:hover {
+    background-color: #128C7E;
+    border-color: #128C7E;
+}
+
+/* --- Header & Navigation --- */
+header {
+    background-color: var(--background-light);
+    border-bottom: 1px solid var(--subtle-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+}
+
+.logo {
+    font-family: 'Georgia', 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.tagline {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 0.8em;
+    color: var(--subtle-color);
+    margin-top: 2px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-dark);
+    margin: 0 15px;
+    font-weight: 500;
+    transition: color 0.3s;
+    position: relative;
+    padding: 5px 0;
+}
+
+nav a:hover,
+nav a.active {
+    color: var(--primary-color);
+}
+
+nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+
+/* --- Moving Banner --- */
+.moving-banner {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    width: 100%;
+    height: var(--banner-height);
+    background-color: var(--accent-color);
+    color: var(--text-dark);
+    text-align: center;
+    line-height: var(--banner-height);
+    font-weight: 600;
+    z-index: 999;
+    overflow: hidden;
+}
+
+.moving-banner p {
+    white-space: nowrap;
+    animation: marquee 15s linear infinite;
+    display: inline-block;
+    padding-left: 100%;
+}
+
+@keyframes marquee {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+
+/* --- Hero Section (Homepage) --- */
+#hero-section {
+    background: url('images/hero.jpg') no-repeat center center/cover;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    position: relative;
+}
+
+#hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+#hero-section .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+#hero-section h1 {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    color: var(--text-light);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.highlight-alive {
+    color: var(--accent-color);
+    font-style: italic;
+}
+
+/* --- About Section (Homepage and About Page) --- */
+.about-layout-container {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.about-layout-container .about-text {
+    flex: 2;
+}
+
+.about-layout-container .about-image {
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+}
+
+
+.about-layout-container .about-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* About Page Specific */
+.about-page .content-block {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.about-page h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.founder-section {
+    margin: 20px 0;
+}
+
+/* --- Courses/Workshops Section --- */
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.course-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.course-card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.course-card h4 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+.course-card p {
+    flex-grow: 1;
+    margin-bottom: 15px;
+}
+
+.course-card .cta-button {
+    /* Reset individual button margin from global style */
+    margin: 0;
+}
+
+.course-card .course-image {
+    /* NOTE: This element is hidden by the new slider styles below, but kept for context */
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+.course-card .course-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Home page course button alignment */
+.course-actions-home {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px; /* Space between buttons */
+    margin-top: 15px; 
+}
+
+/* Make both buttons equal size */
+.course-actions-home .cta-button {
+    flex-grow: 1; 
+    flex-basis: 0; /* Ensures equal distribution of space */
+    margin: 0; /* Override global margin */
+    padding: 10px 15px; 
+}
+
+/* --- Newsletter Section --- */
+#newsletter {
+    text-align: center;
+    background-color: var(--background-light);
+}
+
+#newsletter h2 {
+    margin-bottom: 10px;
+}
+
+#newsletter p {
+    margin-bottom: 25px;
+}
+
+#newsletter-form-google {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#newsletter-form-google input[type="text"],
+#newsletter-form-google input[type="email"] {
+    padding: 12px;
+    border: 1px solid var(--subtle-color);
+    border-radius: 5px;
+    flex-grow: 1;
+    font-size: 1em;
+}
+
+#newsletter-form-google button {
+    margin: 0;
+    flex-shrink: 0;
+}
+
+#form-message {
+    margin-top: 10px;
+    font-weight: 600;
+    color: #28a745;
+}
+
+#form-message.hidden {
+    display: none;
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    padding: 50px 10% 20px; /* Adjusted padding-bottom for new bottom section */
+    font-size: 0.9em;
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding-bottom: 30px; /* Space above the bottom line */
+}
+
+.footer-container .col {
+    flex: 1;
+    min-width: 200px;
+}
+
+/* Center align content in the Collections column */
+.footer-collections {
+    text-align: left;
+}
+
+/* Style for the new contact list in the logo column */
+.footer-logo-info h4 {
+    color: rgba(255, 255, 255, 0.8); /* Subdued white for subheading */
+    margin-bottom: 5px;
+    font-size: 1em;
+    font-weight: 600;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; /* Back to sans-serif */
+}
+
+
+.footer-container h3 {
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.footer-container p {
+    margin-bottom: 10px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-container ul li {
+    margin-bottom: 10px; /* Increased space for clarity in lists */
+}
+
+.footer-container ul li a {
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.3s ease;
+    display: flex; /* Use flex to align icon and text */
+    align-items: center;
+}
+
+/* Center alignment for list items inside Collections column */
+.footer-collections ul {
+    display: inline-block; /* Allows the ul to shrink to content width */
+    text-align: left; /* Reverts text alignment for list items back to left */
+}
+
+.footer-container ul li a:hover {
+    color: var(--accent-color);
+}
+
+.social-links ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.social-links i,
+.footer-logo-info ul i { /* Updated selector to include the new location of contact icons */
+    margin-right: 8px;
+    font-size: 1.2em;
+    width: 20px; /* Ensures consistent alignment */
+    text-align: center;
+}
+
+/* New: Footer Bottom Section */
+.footer-bottom {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.footer-bottom hr {
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 10px 0;
+}
+
+.footer-bottom p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.8em;
+    margin-top: 10px;
+}
+
+/* --- Media Queries for Responsiveness --- */
+@media (max-width: 900px) {
+    .section-padding {
+        padding: 60px 5%;
+    }
+
+    .header-container {
+        flex-direction: column;
+        height: auto;
+        padding: 10px 5%;
+    }
+
+    .logo {
+        margin-bottom: 10px;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav a {
+        margin: 0 10px 10px 10px;
+        padding: 5px;
+    }
+
+    body {
+        padding-top: calc(80px + var(--banner-height));
+    }
+
+    #hero-section h1 {
+        font-size: 2.5em;
+    }
+}
+
+@media (max-width: 600px) {
+    .section-padding {
+        padding: 40px 5%;
+    }
+
+    .about-layout-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-layout-container .about-image {
+        order: -1;
+        margin-bottom: 20px;
+        min-width: unset;
+    }
+
+    #newsletter-form-google {
+        flex-direction: column;
+    }
+
+    #newsletter-form-google button {
+        width: 100%;
+    }
+    
+    .filters-container {
+        /* On small screens, let buttons stack a bit more flexibly */
+        justify-content: flex-start;
+    }
+
+    .filter-button {
+        flex-grow: 1;
+        font-size: 0.8em;
+    }
+    
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        /* Center lists/links inside columns on mobile */
+    }
+
+    .footer-container ul {
+        text-align: left;
+        padding-left: 10px; /* Minor indentation for lists */
+    }
+
+    .footer-container ul li a {
+        justify-content: flex-start;
+    }
+    
+    .footer-container .col {
+        width: 100%;
+        margin-bottom: 20px;
+        padding: 0;
+    }
+
+    .social-links ul {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    /* Override center alignment on mobile, restoring it to the column's default center alignment */
+    .footer-collections {
+        text-align: center; 
+    }
+
+    .footer-collections ul {
+        display: block; /* Back to full width list for mobile stacking */
+        text-align: center;
+        padding: 0; /* Remove padding override */
+    }
+
+    .footer-collections ul li a {
+        justify-content: center; /* Center the icons and text */
+    }
+
+
+    .course-actions-home {
+        flex-direction: column;
+    }
+
+    .course-actions-home .cta-button {
+        width: 100%;
+        flex-basis: auto; /* Reset flex-basis for full width on mobile */
+    }
+}
+
+/* --- GALLERY STYLES --- */
+
+/* Styles for the featured gallery on the home page (index.html) */
+.gallery-grid {
+    display: grid;
+    /* 3 columns on desktop, responsive */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 30px; /* Space between cards */
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.full-gallery-main {
+    padding: 30px 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* --- UPDATED FILTER BUTTON STYLES (for .filter-button) --- */
+#gallery-filters {
+    padding: 20px 10%;
+    max-width: 1400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.filters-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.filter-button {
+    /* New 'Chip' or 'Pill' style for filters */
+    background-color: var(--card-bg); 
+    border: 1px solid var(--subtle-color); 
+    color: var(--text-dark); 
+    padding: 8px 18px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.filter-button:hover:not(.active) {
+    color: var(--primary-color); 
+    border-color: var(--primary-color);
+}
+
+.filter-button.active {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border-color: var(--primary-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+/* --- END OF UPDATED FILTER BUTTON STYLES --- */
+
+
+/* Masonry Grid (Pinterest Style) - Only used by gallery.html for the main grid */
+.masonry-grid {
+    column-count: 4; /* Default 4 columns */
+    column-gap: 15px;
+    width: 100%;
+}
+
+@media (max-width: 1200px) {
+    .masonry-grid {
+        column-count: 3;
+    }
+}
+@media (max-width: 768px) {
+    .masonry-grid {
+        column-count: 2;
+        column-gap: 10px;
+    }
+}
+@media (max-width: 480px) {
+    /* Note: Masonry on mobile is often better as a single column. */
+    .masonry-grid {
+        column-count: 1;
+    }
+}
+
+.gallery-card {
+    display: inline-block; /* Essential for Masonry effect, but compatible with Grid */
+    width: 100%;
+    margin-bottom: 15px; /* Spacing handled by column-gap/grid-gap, but kept for legacy */
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e0e0e0;
+    transition: transform 0.2s;
+}
+
+.gallery-card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.card-image-wrapper {
+    position: relative;
+}
+
+.gallery-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.card-info {
+    padding: 10px 15px;
+    /* Center align heading and medium (from previous request) */
+    text-align: center;
+}
+
+.card-info h4 {
+    font-size: 1.1em;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.card-info p {
+    font-size: 0.9em;
+    color: #888;
+    margin-bottom: 0; 
+}
+
+/* Cleanup: Styles related to the removed 'Inquire' button */
+.product-card .product-info {
+    padding: 0; 
+}
+
+.product-card .product-actions {
+    margin-top: 0; 
+}
+
+/* Status Badge for Sold/Available/Archived Items (used by JS) */
+.status-label, .status-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    font-weight: 600;
+    text-transform: uppercase;
+    z-index: 5; 
+}
+
+.status-label.available, .status-badge.available {
+    background-color: #4CAF50; /* Green */
+    color: var(--text-light);
+}
+
+.status-label.sold, .status-badge.sold,
+.status-label.archived, .status-badge.archived {
+    background-color: var(--primary-color); /* Brown */
+    color: var(--text-light);
+}
+
+/* --- Course Card Image Slider Styles (UPDATED FOR HOME PAGE COMPATIBILITY) --- */
+
+/* Apply slider base styles to ALL course-card types (home page and full page) */
+.course-card .course-image-slider-container {
+    /* The container clips the extra images */
+    width: 100%;
+    height: 300px; /* Default height for the full page card */
+    overflow: hidden; 
+    position: relative; /* Needed to position buttons and dots */
+    border-radius: 4px;
+    margin-bottom: 15px; /* Spacing below the image block */
+}
+
+/* Override for Home Page Course Cards (smaller height) */
+.course-card:not(.full-page-card) .course-image-slider-container {
+    height: 200px; /* Use the smaller height for the home page cards */
+}
+
+.course-card .course-slides-wrapper {
+    /* This element moves horizontally */
+    display: flex; /* Arranges slides in a row */
+    height: 100%;
+    transition: transform 0.4s ease-in-out; /* Smooth sliding transition */
+}
+
+.course-card .course-slide {
+    /* Each slide takes up 100% of the container width and does not shrink */
+    min-width: 100%; 
+    width: 100%; 
+    flex-shrink: 0; 
+    height: 100%;
+}
+
+.course-card .course-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the slide area without distortion */
+    display: block;
+}
+
+/* Cleanup: Hide the old single-image container across all cards */
+.course-card .course-image { 
+    display: none; 
+}
+
+
+/* --- Slider Navigation Buttons --- */
+
+.slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: var(--text-light);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 1.2em;
+    opacity: 0.8;
+    transition: opacity 0.2s, background-color 0.2s;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-button:hover {
+    opacity: 1;
+    background: var(--primary-color);
+}
+
+.prev-button {
+    left: 10px;
+}
+
+.next-button {
+    right: 10px;
+}
+
+/* --- Navigation Dots --- */
+
+.slider-nav-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 10;
+}
+
+.nav-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    margin: 0 4px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.nav-dot.active {
+    background-color: var(--accent-color);
+    transform: scale(1.2);
+}
+
+/* Ensure the course info section is flexible to fit the new slider */
+/* The full-page card styles were updated to prevent padding issues with the slider */
+.course-card.full-page-card {
+    padding: 0; 
+    overflow: hidden; 
+}
+
+.course-card.full-page-card .course-info {
+    padding: 20px; 
+}

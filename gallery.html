@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Alka Art Studio</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="header-placeholder"></div> 
+
+    <div class="moving-banner">
+        <p>Artworks include Fevicryl Artworks as well.</p>
+    </div>
+
+    <main class="gallery-page">
+        <section id="gallery-header" class="section-padding">
+            <h1>Our Artworks Collection</h1>
+            <p>Explore a diverse range of handmade masterpieces, from intricate paintings to handcrafted fashion.</p>
+        </section>
+
+        <section id="gallery-filters">
+            <div class="filters-container">
+                <button class="filter-button active" data-filter="all">All Artworks</button>
+                <button class="filter-button" data-filter="painting">Paintings</button>
+                <button class="filter-button" data-filter="fashion">Handcrafted Fashion</button>
+                <button class="filter-button" data-filter="clay">Clay Art</button>
+                <button class="filter-button" data-filter="interior">Interior Decor</button>
+                <button class="filter-button" data-filter="traditional">Traditional Art Forms</button>
+            </div>
+        </section>
+        
+        <section id="artworks-container" class="section-padding">
+            <div id="gallery-grid" class="masonry-grid"></div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div> 
+
+    <script src="script.js"></script>
+</body>
+</html>
