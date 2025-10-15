@@ -20,11 +20,21 @@ async function fetchData(path) {
     try {
         const response = await fetch(path);
         const csvText = await response.text();
-        // Simple CSV to JSON converter (assuming basic structure without complex quotes/newlines)
-        const lines = csvText.split('\r\n').filter(line => line.trim() !== '');
-        const headers = lines[0].split(',').map(h => h.trim());
+        
+        // CRITICAL FIX: Use Regex to split lines by any combination of \r or \n
+        // This handles cross-platform line ending differences.
+        const lines = csvText.split(/[\r\n]+/).filter(line => line.trim() !== '');
+        
+        // If the file is empty or only contains a header, return an empty array
+        if (lines.length <= 1) {
+             return [];
+        }
+
+        // Handle headers which might contain commas inside quoted strings
+        const headers = lines[0].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(h => h.trim().replace(/^"|"$/g, '').replace(/""/g, '"'));
+        
         const data = lines.slice(1).map(line => {
-            // NOTE: The regex /,(?=(?:(?:[^"]*"){2})*[^"]*$)/ handles commas inside double-quoted strings.
+            // The regex /,(?=(?:(?:[^"]*"){2})*[^"]*$)/ handles commas inside double-quoted strings.
             const values = line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(v => v.trim().replace(/^"|"$/g, '').replace(/""/g, '"'));
             const row = {};
             headers.forEach((header, i) => {
@@ -76,8 +86,6 @@ function setAllStatusLabelsVisibility() {
 
 /**
  * Generates the HTML string for a single gallery product card.
- *
- * MODIFIED: Splits filters by semicolon (;) for multi-category support.
  */
 function createGalleryItemHTML(item) {
     const statusText = item.status || 'Available';
@@ -86,18 +94,17 @@ function createGalleryItemHTML(item) {
     const statusLabel = `<span class="status-badge ${statusClass}">${statusText}</span>`;
 
     // --- LOGIC FOR MULTIPLE FILTERS (USES SEMICOLON) ---
-    // 1. Splits the CSV filter string (e.g., "painting; traditional") by semicolon.
-    // 2. Trims and converts each to lowercase.
-    // 3. Joins them with a space (e.g., "painting traditional") for filtering.
     const filters = item.filter ?
         item.filter.split(';').map(f => f.trim().toLowerCase()).filter(f => f.length > 0).join(' ') :
         'all';
     // ------------------------------------
 
+    const imagePath = `images/${item.image_src}`;
+
     const html = `
         <div class="gallery-card product-card" data-filter="${filters}" data-id="${item.id}">
             <div class="card-image-wrapper">
-                <img src="images/${item.image_src}" alt="${item.title}">
+                <img src="${imagePath}" alt="${item.title}">
                 ${SHOW_GALLERY_STATUS_TO_ALL ? statusLabel : ''}
             </div>
             <div class="card-info product-info">
@@ -114,6 +121,7 @@ function createGalleryItemHTML(item) {
  */
 async function setupGalleryPage() {
     const rawData = await fetchData(GALLERY_CSV_PATH);
+
     // Filter out archived items
     const allArtworks = rawData.filter(item => item.status && item.status.toLowerCase() !== 'archived');
     const galleryGrid = document.getElementById('gallery-grid');
@@ -139,14 +147,12 @@ async function setupGalleryPage() {
             productCards.forEach(card => {
                 const itemFiltersString = card.getAttribute('data-filter');
 
-                // --- LOGIC FOR MULTIPLE FILTERS ---
                 // Checks if the item's space-separated data-filter string includes the filterValue
                 if (filterValue === 'all' || itemFiltersString.includes(filterValue)) {
                     card.style.display = 'inline-block'; // Necessary for Masonry to work on show
                 } else {
                     card.style.display = 'none';
                 }
-                // ------------------------------------
             });
         });
     });
@@ -219,6 +225,7 @@ function setupCourseSliders() {
  */
 async function setupCoursesPage() {
     const coursesData = await fetchData(COURSES_CSV_PATH);
+
     const coursesList = document.getElementById('courses-list');
 
     // Filter to show only courses with status 'yes'
@@ -274,11 +281,11 @@ async function setupCoursesPage() {
 
 /**
  * Loads the initial set of data for the home page (featured gallery items and first 3 featured courses).
- * * UPDATED: Course loading now filters for 'is_featured' and shows the first 3.
  */
 async function loadAndFilterHomePage() {
     // 1. Load and filter Gallery Items
     const rawData = await fetchData(GALLERY_CSV_PATH);
+
     const allArtworks = rawData.filter(item => item.status && item.status.toLowerCase() !== 'archived');
     const featuredArtworks = allArtworks.filter(item => item.is_featured && item.is_featured.toLowerCase() === 'yes').slice(0, 3);
     const galleryGrid = document.getElementById('home-gallery-grid');
@@ -290,7 +297,7 @@ async function loadAndFilterHomePage() {
         setAllStatusLabelsVisibility();
     }
 
-    // 2. Load and filter Courses (UPDATED LOGIC HERE)
+    // 2. Load and filter Courses
     const coursesData = await fetchData(COURSES_CSV_PATH);
 
     // Filter to show only published courses (status: 'yes') AND featured courses (is_featured: 'yes').
