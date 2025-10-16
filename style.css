@@ -218,7 +218,7 @@ nav a.active::after {
 
 /* --- Hero Section (Homepage) --- */
 #hero-section {
-    background: url('images/hero.jpg') no-repeat center center/cover;
+    background: url('images/brand_kit/hero.jpg') no-repeat center center/cover;
     height: 60vh;
     display: flex;
     align-items: center;
