@@ -99,7 +99,7 @@ function createGalleryItemHTML(item) {
         'all';
     // ------------------------------------
 
-    const imagePath = `images/${item.image_src}`;
+    const imagePath = `images/gallery/${item.image_src}`;
 
     const html = `
         <div class="gallery-card product-card" data-filter="${filters}" data-id="${item.id}">
@@ -241,7 +241,7 @@ async function setupCoursesPage() {
             // Generate HTML for all images inside a slider/scroller container
             const imageSlidesHTML = imageNames.map((imageName, index) => `
                 <div class="course-slide" data-slide-index="${index}">
-                    <img src="images/${imageName}" alt="${course.course_name} image ${index + 1}">
+                    <img src="images/gallery/${imageName}" alt="${course.course_name} image ${index + 1}">
                 </div>
             `).join('');
 
@@ -319,7 +319,7 @@ async function loadAndFilterHomePage() {
             // Generate HTML for all images inside a slider/scroller container
             const imageSlidesHTML = imageNames.map((imageName, index) => `
                 <div class="course-slide" data-slide-index="${index}">
-                    <img src="images/${imageName}" alt="${course.course_name} image ${index + 1}">
+                    <img src="images/gallery/${imageName}" alt="${course.course_name} image ${index + 1}">
                 </div>
             `).join('');
 
