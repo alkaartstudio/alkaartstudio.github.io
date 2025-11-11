@@ -9,11 +9,11 @@
 :root {
     --primary-color: #A34839;
     --accent-color: #F8C300;
-    --background-light: #fff;
+    --background-light: #ffffff;
     --background-dark: #5F3E33;
     --subtle-color: #B78D7D;
     --text-dark: #333333;
-    --text-light: #fff;
+    --text-light: #ffffff;
     --card-bg: #FFFAE9;
     --header-height: 80px;
     --banner-height: 40px;
